@@ -1,0 +1,1 @@
+function g(e){let{C:a,state:r,inventoryPage:s,tableSize:c,plantilla:i,E:n,stock:v}=e,o=a.paginate(r.products,s,c());return e.setPage(o.page),i("tpl-vista-inventario",[o.items.map(t=>i("tpl-vista-inventario-2",[n(t.name),t.variants.length,n(t.category),a.money(a.price(t)),v(t),t.active?"Activa":"Inactiva",t.id,t.id])).join("")])}export{g as render};

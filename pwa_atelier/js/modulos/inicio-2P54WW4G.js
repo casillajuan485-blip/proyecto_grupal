@@ -1,0 +1,1 @@
+function s(a){let{state:t,metrics:e,plantilla:r,card:n,recent:i,date:o}=a;return e()+r("tpl-vista-inicio",[t.products.filter(c=>c.active).slice(0,3).map(n).join(""),i(),t.backup?"\xDAltimo respaldo: "+o(t.backup.at)+" \xB7 evento #"+t.backup.watermark:"A\xFAn no tienes una copia de seguridad. Exporta tus datos y gu\xE1rdalos en un lugar seguro."])}export{s as render};

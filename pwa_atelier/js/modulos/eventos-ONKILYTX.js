@@ -1,0 +1,1 @@
+function i(a){let{plantilla:n,state:e,C:s}=a;return n("tpl-vista-eventos",[e.events.length,e.events.length>=200?"Meta m\xEDnima de 200 cumplida.":"Meta m\xEDnima: 200 operaciones.",e.events.some(t=>t.demo)?"disabled":"",s.TYPES.map(t=>n("tpl-vista-eventos-2",[t])).join("")])}export{i as render};
