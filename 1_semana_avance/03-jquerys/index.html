@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!--
+  ATELIER: proyecto frontend de una tienda de ropa.
+  index.html = estructura; css/styles.css = presentación; js/app.js = lógica y jQuery.
+  js/pdf-report.js = diseño de reportes PDF; js/lib/ = bibliotecas externas; img/ = fotografías.
+  Edita nuestros archivos comentados. Las bibliotecas .min.js se usan tal como se descargaron.
+  Las rutas parten de este index.html, aunque las imágenes se inserten desde JavaScript.
+  Esta copia no necesita .nojekyll para ejecutarse localmente.
+  No se necesita una base de datos ni un servidor de aplicación.
+  Hora automática del dispositivo; no es una hora de servidor certificada.
+  Los colores que ves en VS Code son del editor. Los de la página están en styles.css.
+  Recursos: jQuery 3.7.1 y jsPDF 3.0.3. Licencias MIT incluidas en js/lib/.
+  Fotografías ilustrativas de images.unsplash.com; reemplazables por las de la tienda.
+  Tipografías opcionales DM Sans y Manrope de Google Fonts; alternativa local Arial.
+-->
+<html lang="es">
+  <!-- CONFIGURACIÓN: codificación, tamaño de pantalla, título y carga de CSS y JavaScript. jQuery se carga antes de app.js. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#10141c" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="img/pwa/icon-192.png" />
+    <link rel="apple-touch-icon" href="img/pwa/icon-192.png" />
+    <link rel="preload" href="css/styles.css" as="style" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>ATELIER — Clothing Hub</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pwa.css" /><link rel="stylesheet" href="css/explicacion.css" />
+    <script defer src="js/lib/jquery.min.js"></script>
+    <!-- jsPDF genera archivos PDF directamente en el navegador. La biblioteca se incluye localmente. -->
+
+
+    <!-- Validaciones y formularios guiados: se cargan antes de la lógica de la tienda. -->
+
+
+
+
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body class="customer-view">
+    <!-- ICONOS LOCALES. Son archivos de imagen dentro de img/iconos/ y funcionan sin conexión. -->
+    <!-- ICONOS: los dibujos están en img/iconos/; aquí solo se muestran como imágenes. -->
+    <!-- MENÚ LATERAL: identidad de la tienda y navegación. data-view indica qué pantalla abre cada botón. -->
+    <aside id="sidebar">
+      <a class="brand" href="#catalogo">
+        <span class="brand-icon">A</span>
+        <span>
+          ATELIER
+          <small>CLOTHING HUB</small>
+        </span>
+      </a>
+      <div class="workspace">ESPACIO DE TRABAJO</div>
+      <!-- NAVEGACIÓN: jQuery escucha estos botones y resalta la pantalla seleccionada. -->
+      <nav aria-label="Principal">
+        
+        
+        <button data-view="catalogo">
+          <img class="ui-icon" src="img/iconos/grid.svg" alt="" aria-hidden="true" / decoding="async">
+          <span>Catálogo</span>
+        </button>
+        
+        <button data-view="ventas">
+          <img class="ui-icon" src="img/iconos/bag.svg" alt="" aria-hidden="true" / decoding="async">
+          <span id="cart-nav-label">Mi carrito</span>
+          <b id="cart-count">0</b>
+        </button>
+        
+        
+        
+      </nav>
+      <!-- INFORMACIÓN LOCAL: los datos pertenecen a este navegador y el perfil es una demostración. -->
+      <div class="sidebar-bottom">
+        <div class="local-pill">
+          <i></i>
+        </div>
+        <div class="version">
+          PROYECTO FORMATIVO
+          <span>v1.0</span>
+        </div>
+      </div>
+    </aside>
+    <div class="shell">
+      <!-- BARRA SUPERIOR: menú hamburguesa, ruta actual, reloj, tema y notificaciones. -->
+      <header>
+        <div class="header-left">
+          <button
+            id="hamburger"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="sidebar"
+          >
+            <img class="ui-icon" src="img/iconos/menu.svg" alt="" aria-hidden="true" / decoding="async">
+          </button>
+          <span>
+            <span id="context-label">Tu tienda</span>
+            <span class="slash">/</span>
+            <strong id="breadcrumb">Vista general</strong>
+          </span>
+        </div>
+        <div class="header-right">
+          <!-- Son vistas del proyecto de demostración, no un inicio de sesión ni permisos reales. -->
+          
+          <span class="today"></span>
+          
+          
+          <button id="theme" aria-label="Cambiar tema">
+            <img class="ui-icon" src="img/iconos/sun.svg" alt="" aria-hidden="true" / decoding="async">
+          </button>
+          
+          <div class="avatar">AD</div>
+          <span class="admin">
+            <span id="profile-name">Cliente</span>
+            <small>Perfil de demostración</small>
+          </span>
+        </div>
+      </header>
+      <!-- CONTENIDO PRINCIPAL: encabezado y espacio donde se inserta la plantilla de la pantalla activa. -->
+      <main>
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">TU TIENDA, BAJO CONTROL</div>
+            <h1 id="page-title">Animaciones jQuery</h1>
+            <p id="page-description">Animaciones originales de catálogo, avisos, menú y detalles desplegables.</p>
+          </div>
+          
+        </div>
+        <p id="connection-status" class="connection-status" role="status" aria-live="polite"></p>
+        <div id="storage-warning" role="alert" hidden></div>
+        <!-- PANTALLA ACTIVA: app.js coloca aquí Inicio, Catálogo, Inventario, Ventas, Eventos o Reportes. -->
+        <section class="parte-guia"><details open><summary>Qué función de ATELIER estás viendo</summary><p>Animaciones originales de catálogo, avisos, menú y detalles desplegables.</p><ol><li>Abre Ver detalles de una prenda y despliega su información: ejecuta slideToggle.</li><li>Añade una prenda al carrito: aparece el aviso original; el modal se cierra con fadeOut.</li><li>Abre Más filtros y cambia entre Catálogo y Carrito: observa los efectos de visibilidad.</li></ol><p><a href="EXPLICACION.md">Explicación del código</a> · <a href="procedencia.json">Procedencia de funciones y archivos</a></p></details><p id="parte-status" role="status"></p></section><div id="content"></div>
+        <!-- PIE DE PÁGINA: recuerda el alcance local de la aplicación. -->
+        <footer>
+          <span>
+            <i></i>
+            Guardado local · Sin conexión entre dispositivos
+          </span>
+          
+        </footer>
+      </main>
+      <!-- Accesos fijos del cliente en celular: siempre indican la sección activa. -->
+      <nav class="mobile-dock client-only" aria-label="Navegación rápida">
+        
+        <button data-view="catalogo">
+          <img class="ui-icon" src="img/iconos/grid.svg" alt="" aria-hidden="true" / decoding="async">
+          <span>Catálogo</span>
+        </button>
+        <button data-view="ventas">
+          <img class="ui-icon" src="img/iconos/bag.svg" alt="" aria-hidden="true" / decoding="async">
+          <span>Carrito</span>
+          <b class="dock-count" hidden>0</b>
+        </button>
+      </nav>
+    </div>
+    <!-- VENTANA MODAL: muestra formularios y confirmaciones. Se cierra con Escape y conserva el foco del teclado. -->
+    <div id="modal-overlay" style="display: none">
+      <section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-heading">
+          <h2 id="modal-title"></h2>
+          <button id="close-modal" aria-label="Cerrar ventana">✕</button>
+        </div>
+        <div id="modal-body"></div>
+      </section>
+    </div>
+    <!-- NOTIFICACIONES: avisos temporales de éxito o error. aria-live permite anunciarlos con un lector de pantalla. -->
+    <div id="toast" role="status" aria-live="polite" style="display: none"></div>
+    <!-- RESTAURACIÓN: selector oculto que recibe un respaldo JSON; se activa desde el botón de importar. -->
+    <input type="file" id="import-file" accept="application/json,.json" hidden />
+
+
+<template id="tpl-acciones-formulario">
+      <div class="form-actions">
+        <button type="button" data-close>Cancelar</button>
+        <button class="primary" type="submit"><!--ATELIER_DATO_0--></button>
+      </div>
+    </template>
+<template id="tpl-tarjeta-prenda">
+      <article class="product" data-id="__ATELIER_DATO_0__" data-category="__ATELIER_DATO_1__">
+        <div class="photo">
+          <button class="flip-open" data-flip aria-expanded="false" aria-label="Girar tarjeta para leer información">ⓘ</button>
+          <img src="img/__ATELIER_DATO_2__.jpg" alt="__ATELIER_DATO_3__" loading="lazy" / decoding="async">
+          <button class="photo-detail" data-detail="__ATELIER_DATO_12__">
+            <img class="ui-icon" src="img/iconos/eye.svg" alt="" aria-hidden="true" / decoding="async">
+            <span>Ver detalles</span>
+          </button>
+          <span class="tag"><!--ATELIER_DATO_4--></span>
+        </div>
+        <div class="product-info">
+          <div class="product-category"><!--ATELIER_DATO_5--></div>
+          <h3><!--ATELIER_DATO_6--></h3>
+          <div class="product-meta">
+            <span class="price"><!--ATELIER_DATO_7--></span>
+            <span class="stock __ATELIER_DATO_8__">
+              <!--ATELIER_DATO_9-->
+              disponibles
+            </span>
+          </div>
+          <div class="product-actions">
+            <div class="dots" aria-label="Colores disponibles: __ATELIER_DATO_10__">
+              <!--ATELIER_DATO_11-->
+            </div>
+            <!-- Dos acciones explícitas: consultar la prenda o iniciar su compra. -->
+            <div class="card-buttons">
+              <button class="card-detail-button" data-detail="__ATELIER_DATO_12__">
+                Ver detalles
+              </button>
+              <button
+                class="primary card-buy-button"
+                data-buy="__ATELIER_DATO_12__"
+                data-atelier-dato-13=""
+              >
+                <img class="ui-icon" src="img/iconos/bag.svg" alt="" aria-hidden="true" / decoding="async">
+                Comprar
+              </button>
+            </div>
+          </div>
+        </div>
+        <section class="card-back" hidden>
+          <h3><!--ATELIER_DATO_6--></h3>
+          <p><!--ATELIER_DATO_14--></p>
+          <button data-flip aria-expanded="true">Volver a la prenda</button>
+          <button data-detail="__ATELIER_DATO_12__">Leer detalles completos</button>
+        </section>
+      </article>
+    </template>
+<template id="tpl-tarjeta-prenda-2">
+      <!-- El color inicial es CSS válido; app.js lo cambia usando el dato indicado. -->
+      <span class="dot" style="background: #aaa" data-color-dato="0"></span>
+    </template>
+<template id="tpl-filtros-catalogo">
+      <div class="toolbar" id="catalog-filters">
+        <input id="search" aria-label="Buscar prendas" placeholder="⌕ Buscar una prenda…" />
+        <select id="category" aria-label="Categoría">
+          <option value="">Todas las categorías</option>
+          <!--ATELIER_DATO_0-->
+        </select>
+
+        <select id="sort" aria-label="Ordenar">
+          <option value="new">Más recientes</option>
+          <option value="low">Menor precio</option>
+          <option value="high">Mayor precio</option>
+          <option value="name">Nombre A–Z</option>
+        </select>
+        <button id="more-filters" aria-expanded="false" aria-controls="extra-filters">
+          <img class="ui-icon" src="img/iconos/sliders.svg" alt="" aria-hidden="true" / decoding="async">
+          Filtros
+        </button>
+        <button id="clear-filters">Limpiar</button>
+      </div>
+      <div class="toolbar" id="extra-filters" style="display: none">
+        <select id="size-filter" aria-label="Talla">
+          <option value="">Todas las tallas</option>
+          <!--ATELIER_DATO_1-->
+        </select>
+        <select id="color-filter" aria-label="Color">
+          <option value="">Todos los colores</option>
+          <!--ATELIER_DATO_2-->
+        </select>
+        <input
+          id="min-price"
+          type="number"
+          min="0"
+          placeholder="Precio mínimo (Bs)"
+          aria-label="Precio mínimo"
+        />
+        <input
+          id="max-price"
+          type="number"
+          min="0"
+          placeholder="Precio máximo (Bs)"
+          aria-label="Precio máximo"
+        />
+        <label>
+          <input type="checkbox" id="in-stock" />
+          Solo disponibles
+        </label>
+        <label>
+          <input type="checkbox" id="offers" />
+          Solo ofertas
+        </label>
+      </div>
+      <div class="section-heading"><p id="results" aria-live="polite"></p></div>
+    </template>
+<template id="tpl-filtros-catalogo-2">
+      <option><!--ATELIER_DATO_0--></option>
+    </template>
+<template id="tpl-filtros-catalogo-3">
+      <option><!--ATELIER_DATO_0--></option>
+    </template>
+<template id="tpl-filtros-catalogo-4">
+      <option><!--ATELIER_DATO_0--></option>
+    </template>
+<template id="tpl-fila-carrito">
+      <tr>
+        <td>
+          <!--ATELIER_DATO_0-->
+          <small>
+            <!--ATELIER_DATO_1-->
+            /
+            <!--ATELIER_DATO_2-->
+            ·
+            <!--ATELIER_DATO_3-->
+            disponibles
+          </small>
+        </td>
+        <td><!--ATELIER_DATO_4--></td>
+        <td>
+          <input
+            data-cart-qty="__ATELIER_DATO_5__"
+            type="number"
+            min="1"
+            max="__ATELIER_DATO_6__"
+            value="__ATELIER_DATO_7__"
+            aria-label="Cantidad de __ATELIER_DATO_8__"
+            style="width: 70px"
+          />
+        </td>
+        <td><!--ATELIER_DATO_9--></td>
+        <td>
+          <button data-remove="__ATELIER_DATO_10__" aria-label="Quitar __ATELIER_DATO_11__">
+            ✕
+          </button>
+        </td>
+      </tr>
+    </template>
+<template id="tpl-vista-ventas">
+      <div class="section-switch admin-only" role="group" aria-label="Apartado de ventas">
+        <button data-sales-tab="cart" aria-pressed="true">
+          <img class="ui-icon" src="img/iconos/bag.svg" alt="" aria-hidden="true" / decoding="async">
+          Preparar venta
+        </button>
+        <button data-sales-tab="history" aria-pressed="false">
+          <img class="ui-icon" src="img/iconos/clock.svg" alt="" aria-hidden="true" / decoding="async">
+          Historial
+        </button>
+      </div>
+      <div id="cart-panel" class="cart-layout">
+        <section class="panel">
+          <div class="section-heading">
+            <h2>Carrito actual</h2>
+            <button data-go="catalogo">＋ Agregar prendas</button>
+          </div>
+          <!--ATELIER_DATO_0-->
+        </section>
+        <section class="panel">
+          <h2>Resumen de venta</h2>
+          <div class="summary-row">
+            <span>Unidades</span>
+            <strong><!--ATELIER_DATO_1--></strong>
+          </div>
+          <div class="summary-row">
+            <span>Entrega</span>
+            <span>Retiro en tienda</span>
+          </div>
+          <div class="summary-row">
+            <span>Pago</span>
+            <span>Al recoger</span>
+          </div>
+          <label class="admin-only" for="sale-channel" style="font-size: 11px; color: var(--muted)">
+            Tipo de operación
+          </label>
+          <select id="sale-channel" class="full admin-only" style="margin-top: 9px">
+            <option value="Web">Pedido web · Pendiente</option>
+            <option value="Tienda">Venta presencial · Entregado</option>
+          </select>
+          <div class="summary-row total">
+            <span>Total</span>
+            <strong><!--ATELIER_DATO_2--></strong>
+          </div>
+          <button id="checkout" class="primary full" data-atelier-dato-3="">
+            Confirmar operación →
+          </button>
+          <p style="font-size: 10px">Venta simulada. No se procesa ningún pago.</p>
+        </section>
+      </div>
+      <section id="sales-history-panel" class="admin-only">
+        <div class="section-heading" style="margin-top: 12px">
+          <div>
+            <h2>Historial de ventas y pedidos</h2>
+            <p>Gestiona estados y registra devoluciones.</p>
+          </div>
+        </div>
+        <div class="panel table-wrap admin-only">
+          <table class="data-table" id="sales-table">
+            <thead>
+              <tr>
+                <th>REFERENCIA</th>
+                <th>FECHA</th>
+                <th>CANAL</th>
+                <th>TOTAL</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--ATELIER_DATO_4-->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="sales-pagination"></div>
+      </section>
+    </template>
+<template id="tpl-vista-ventas-2">
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>PRENDA</th>
+              <th>PRECIO</th>
+              <th>CANTIDAD</th>
+              <th>IMPORTE</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--ATELIER_DATO_0-->
+          </tbody>
+        </table>
+      </div>
+    </template>
+<template id="tpl-vista-ventas-3">
+      <tr>
+        <td>
+          #
+          <!--ATELIER_DATO_0-->
+          <!--ATELIER_DATO_1-->
+        </td>
+        <td><!--ATELIER_DATO_2--></td>
+        <td><!--ATELIER_DATO_3--></td>
+        <td>
+          <!--ATELIER_DATO_4-->
+          <!--ATELIER_DATO_5-->
+        </td>
+        <td>
+          <span class="badge"><!--ATELIER_DATO_6--></span>
+        </td>
+        <td>
+          <button data-sale="__ATELIER_DATO_7__">Ver detalle</button>
+          <!--ATELIER_DATO_8-->
+        </td>
+      </tr>
+    </template>
+<template id="tpl-vista-ventas-4">
+      <button data-status="__ATELIER_DATO_0__">Cambiar estado</button>
+    </template>
+<template id="tpl-vista-ventas-5">
+      <button data-refund="__ATELIER_DATO_0__">Devolver</button>
+    </template>
+<template id="tpl-opcion-variante">
+      <option value="__ATELIER_DATO_0__">
+        <!--ATELIER_DATO_1-->
+        /
+        <!--ATELIER_DATO_2-->
+        ·
+        <!--ATELIER_DATO_3-->
+        uds.
+      </option>
+    </template>
+<template id="tpl-detalle-prenda">
+      <img class="detail-photo" src="img/__ATELIER_DATO_0__.jpg" alt="__ATELIER_DATO_1__" / decoding="async">
+      <p><!--ATELIER_DATO_2--></p>
+      <div class="section-heading">
+        <span class="price"><!--ATELIER_DATO_3--></span>
+        <!--ATELIER_DATO_4-->
+      </div>
+      <form id="cart-form" data-id="__ATELIER_DATO_5__">
+        <div class="form-grid">
+          <div class="field wide">
+            <label for="cart-variant">Talla y color</label>
+            <select id="cart-variant">
+              <!--ATELIER_DATO_6-->
+            </select>
+          </div>
+          <div class="field">
+            <label for="cart-quantity">Cantidad</label>
+            <input id="cart-quantity" type="number" min="1" max="1000000" value="1" required />
+          </div>
+        </div>
+        <button
+          type="button"
+          id="product-details-toggle"
+          aria-expanded="false"
+          aria-controls="product-details"
+          style="margin-top: 15px"
+        >
+          Detalles de la prenda ⌄
+        </button>
+        <div id="product-details" style="display: none">
+          <p style="font-size: 12px">
+            Categoría:
+            <!--ATELIER_DATO_7-->
+            . Selecciona tu talla y color antes de agregar al carrito. Disponibilidad local de
+            demostración.
+          </p>
+        </div>
+        <!--ATELIER_DATO_8-->
+      </form>
+    </template>
+<template id="tpl-detalle-prenda-2">
+      <span class="badge">
+        <!--ATELIER_DATO_0-->
+        % de descuento
+      </span>
+    </template>
+<template id="tpl-dialogo-interaccion">
+      <p>
+        Al confirmar se guardará la operación y se actualizarán las existencias. Para pedidos web,
+        conserva tu número para recoger en tienda. El pago se realiza al recoger.
+      </p>
+      <form id="checkout-form" data-channel="__ATELIER_DATO_0__"><!--ATELIER_DATO_1--></form>
+    </template>
+<template id="tpl-pagination">
+      <div class="pagination compact-pagination">
+        <span aria-live="polite"><!--ATELIER_DATO_1--></span>
+        <div>
+          <button
+            data-paginate="__ATELIER_DATO_0__"
+            data-direction="-1"
+            data-atelier-dato-2=""
+            aria-label="Página anterior"
+          >
+            <img class="ui-icon" src="img/iconos/left.svg" alt="" aria-hidden="true" / decoding="async">
+            <span>Anterior</span>
+          </button>
+          <button
+            data-paginate="__ATELIER_DATO_0__"
+            data-direction="1"
+            data-atelier-dato-3=""
+            aria-label="Página siguiente"
+          >
+            <span>Siguiente</span>
+            <img class="ui-icon" src="img/iconos/right.svg" alt="" aria-hidden="true" / decoding="async">
+          </button>
+        </div>
+      </div>
+    </template>
+</body></html>
