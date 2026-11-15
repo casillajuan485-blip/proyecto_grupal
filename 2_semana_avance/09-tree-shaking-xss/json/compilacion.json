@@ -1,0 +1,9 @@
+{
+  "compilador": "esbuild",
+  "version": "0.25.12",
+  "entrada": "js/app.js",
+  "sinTreeShaking": 32904,
+  "conTreeShaking": 32904,
+  "eliminados": 0,
+  "nota": "Ambos paquetes proceden de las mismas funciones extraídas. Solo se ejecuta compilado.js."
+}

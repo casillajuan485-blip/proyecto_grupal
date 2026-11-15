@@ -1,0 +1,533 @@
+[
+  {
+    "destino": "css/styles.css",
+    "origen": "css/styles.css",
+    "tipo": "copia literal",
+    "sha256": "2e28933b7ba9765992f96b30a3492ef004645db5a2e42354bbb56addb61c3409"
+  },
+  {
+    "destino": "css/pwa.css",
+    "origen": "css/pwa.css",
+    "tipo": "copia literal",
+    "sha256": "1f59a55f8c75663f0e17530903ddded602dfc7a1151d2da25c189c492d622c6f"
+  },
+  {
+    "destino": "img/bag.jpg",
+    "origen": "img/bag.jpg",
+    "tipo": "copia literal",
+    "sha256": "0db1af8854c190948cb93b74d967570b9bfdca2d5e3dc092923f479acad0fb24"
+  },
+  {
+    "destino": "img/dress.jpg",
+    "origen": "img/dress.jpg",
+    "tipo": "copia literal",
+    "sha256": "69c5b559d9a8e55b24bcca5c52f4d1870c76c92eb5f25802ddada9a49afae454"
+  },
+  {
+    "destino": "img/jacket.jpg",
+    "origen": "img/jacket.jpg",
+    "tipo": "copia literal",
+    "sha256": "3ebeebb5df97cdf6eb0f279da8917d6c39bafde437302dd48a6177d10e6aef1b"
+  },
+  {
+    "destino": "img/jeans.jpg",
+    "origen": "img/jeans.jpg",
+    "tipo": "copia literal",
+    "sha256": "096b06fb01b58ba27b5b39548f4dcc68b1b30dca2a9231e55dc0073422f7e890"
+  },
+  {
+    "destino": "img/pants.jpg",
+    "origen": "img/pants.jpg",
+    "tipo": "copia literal",
+    "sha256": "19d6c99ba6d16d982321eb61e84cfd09a0f51c2cabeffcfaddbe9a405b7ccb2a"
+  },
+  {
+    "destino": "img/red.jpg",
+    "origen": "img/red.jpg",
+    "tipo": "copia literal",
+    "sha256": "2aebcea7c43c3da84c81f31ec9d22043e7d677a17d221687c9be28ad2cb398f2"
+  },
+  {
+    "destino": "img/shirt.jpg",
+    "origen": "img/shirt.jpg",
+    "tipo": "copia literal",
+    "sha256": "8ac3eda52c52f674ba71aeb5431478e0a631b4ac0fcb86b9ca3fe7e720098faf"
+  },
+  {
+    "destino": "img/white.jpg",
+    "origen": "img/white.jpg",
+    "tipo": "copia literal",
+    "sha256": "3ae9600dfe98994b0c25c2d1764ff71488baafbdc0ce02e72caccb5b883bafee"
+  },
+  {
+    "destino": "img/iconos/backup.svg",
+    "origen": "img/iconos/backup.svg",
+    "tipo": "copia literal",
+    "sha256": "d9e60adbb3c30d8603dd4abde921a43dba8927558d03f11b7a1c0050b47b69d0"
+  },
+  {
+    "destino": "img/iconos/bag.svg",
+    "origen": "img/iconos/bag.svg",
+    "tipo": "copia literal",
+    "sha256": "af6bbee2ea710dfb5e6b2784c710827ae4e410664a9cbb3893d2f7d0a8af765a"
+  },
+  {
+    "destino": "img/iconos/bell.svg",
+    "origen": "img/iconos/bell.svg",
+    "tipo": "copia literal",
+    "sha256": "b4edd4c3d3d8e48f31ac54ae187022a4c1db0cbc85deb57396e076c4bef869d7"
+  },
+  {
+    "destino": "img/iconos/box.svg",
+    "origen": "img/iconos/box.svg",
+    "tipo": "copia literal",
+    "sha256": "00a819b6344f7a377709be8b8c5008cf4c0d6f164373fafd2f177b49a87fbd94"
+  },
+  {
+    "destino": "img/iconos/chart.svg",
+    "origen": "img/iconos/chart.svg",
+    "tipo": "copia literal",
+    "sha256": "688ee86209048e961077c6464a76c2d3feb7f61ce81989fe001569f3b5a44d33"
+  },
+  {
+    "destino": "img/iconos/clock.svg",
+    "origen": "img/iconos/clock.svg",
+    "tipo": "copia literal",
+    "sha256": "bf109cd9146a5bd6ec9d0443a4c8310513d0dd0ad4eda80b4e273ef7ea6775b3"
+  },
+  {
+    "destino": "img/iconos/eye.svg",
+    "origen": "img/iconos/eye.svg",
+    "tipo": "copia literal",
+    "sha256": "48b1126b5c3bcd82d008d10952de997d5660e96ebd55a731431240bd2f890ac6"
+  },
+  {
+    "destino": "img/iconos/file.svg",
+    "origen": "img/iconos/file.svg",
+    "tipo": "copia literal",
+    "sha256": "381aa6d04b5280afb81e11ed774ea7ccfc82631b386b16ec2fb4dca72db0241e"
+  },
+  {
+    "destino": "img/iconos/grid.svg",
+    "origen": "img/iconos/grid.svg",
+    "tipo": "copia literal",
+    "sha256": "a5e805a0c354450629e7789705a9ce26888d0fa7ac72c14f6886a633dc1f13e7"
+  },
+  {
+    "destino": "img/iconos/help.svg",
+    "origen": "img/iconos/help.svg",
+    "tipo": "copia literal",
+    "sha256": "2c45465c1c8f198a26d2561e523dbcb2c2f2deb9be6e79f7ed625166d6669d4e"
+  },
+  {
+    "destino": "img/iconos/home.svg",
+    "origen": "img/iconos/home.svg",
+    "tipo": "copia literal",
+    "sha256": "b227ddfd84eb554ca9482891da2d6c865c347f229ef87531bfe3d5a26a3a809c"
+  },
+  {
+    "destino": "img/iconos/left.svg",
+    "origen": "img/iconos/left.svg",
+    "tipo": "copia literal",
+    "sha256": "e42cb2eb55d63774968103ce25ac3da205ee7a60e65b4436ed17892761435b0e"
+  },
+  {
+    "destino": "img/iconos/menu.svg",
+    "origen": "img/iconos/menu.svg",
+    "tipo": "copia literal",
+    "sha256": "4746d9d1228c88cba0171510ec228f4e9b82b885b7d90ccbd92b57fc7d3a12ce"
+  },
+  {
+    "destino": "img/iconos/moon.svg",
+    "origen": "img/iconos/moon.svg",
+    "tipo": "copia literal",
+    "sha256": "a30a8aa9e390f2bda4ad68e1f154484d115fc109eaf336bcd25d465d9e0bf4cb"
+  },
+  {
+    "destino": "img/iconos/right.svg",
+    "origen": "img/iconos/right.svg",
+    "tipo": "copia literal",
+    "sha256": "bced814f68c7b7b9aaa070868d7ff81e288336c66dde74e3b5ea1c75bfcc8e12"
+  },
+  {
+    "destino": "img/iconos/sliders.svg",
+    "origen": "img/iconos/sliders.svg",
+    "tipo": "copia literal",
+    "sha256": "328e2cca0db609b6cc9bee7df9222a98ec06f2ad48825a8e135b253185e5f3c2"
+  },
+  {
+    "destino": "img/iconos/sun.svg",
+    "origen": "img/iconos/sun.svg",
+    "tipo": "copia literal",
+    "sha256": "e300a3928fa52fa9949768313315a3aa5fbb0628e84714995b7026a3c297546a"
+  },
+  {
+    "destino": "img/pwa/icon-192.png",
+    "origen": "img/pwa/icon-192.png",
+    "tipo": "copia literal",
+    "sha256": "24c1de26ab0606000499849dc672a7d6b562594875a0aaf0088368428229a521"
+  },
+  {
+    "destino": "img/pwa/icon-512.png",
+    "origen": "img/pwa/icon-512.png",
+    "tipo": "copia literal",
+    "sha256": "0ff43ea529dd710005deedbf8d22a7346f84e52607f2d720bdb8f5707c1c4399"
+  },
+  {
+    "destino": "js/lib/jquery.min.js",
+    "origen": "js/lib/jquery.min.js",
+    "tipo": "copia literal",
+    "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a"
+  },
+  {
+    "destino": "js/lib/LICENSE-jquery.txt",
+    "origen": "js/lib/LICENSE-jquery.txt",
+    "tipo": "copia literal",
+    "sha256": "933782ba803b03df7dc5f8a163d82900d8d78f0752b495eec074f210d8621e5c"
+  },
+  {
+    "destino": "js/validaciones.js",
+    "origen": "fuentes/validaciones.js",
+    "tipo": "copia literal",
+    "sha256": "85211a9dd53d46611a6ea3234ee6aeea8d5a72f2f4087cea64db591c7d17299b"
+  },
+  {
+    "destino": "js/catalog-source.js",
+    "origen": "fuentes/catalog-source.js",
+    "tipo": "copia literal",
+    "sha256": "c9afc584f32872acdc9170ceb17192d19d9306b99dc35d9371f0f72374d8ddb4"
+  },
+  {
+    "destino": "js/quantity.js",
+    "origen": "fuentes/quantity.js",
+    "tipo": "copia literal",
+    "sha256": "880db294658f5ac5f039515b5b7d7b21c9497a666f2f31cb551f540dec3a4619"
+  },
+  {
+    "destino": "js/motion.js",
+    "origen": "fuentes/motion.js",
+    "tipo": "copia literal",
+    "sha256": "03aad70a7960315a719ae8278d275b907757117a99234ada801c04d98df11c21"
+  },
+  {
+    "destino": "js/dom.js",
+    "origen": "fuentes/dom.js",
+    "tipo": "copia literal",
+    "sha256": "9190a6c48b6cb9df09d34376c4b66d3f46fd76baaf722eda408ec5a865e15e4d"
+  },
+  {
+    "destino": "js/core.js",
+    "origen": "fuentes/app.js",
+    "linea": 17,
+    "tipo": "núcleo extraído; clave de almacenamiento aislada por carpeta"
+  },
+  {
+    "destino": "js/secciones/inventario.js",
+    "origen": "fuentes/secciones/inventario.js",
+    "tipo": "copia literal",
+    "sha256": "5689a75916e0cf087aca35f8cb62e9b7a69c14b74759391008a248d2bb00bbdf"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "bind",
+    "origen": "fuentes/app.js",
+    "linea": 439,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "releaseDownloads",
+    "origen": "fuentes/app.js",
+    "linea": 447,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "later",
+    "origen": "fuentes/app.js",
+    "linea": 451,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "plantilla",
+    "origen": "fuentes/app.js",
+    "linea": 481,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "commit",
+    "origen": "fuentes/app.js",
+    "linea": 568,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "safe",
+    "origen": "fuentes/app.js",
+    "linea": 598,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "toast",
+    "origen": "fuentes/app.js",
+    "linea": 609,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "modal",
+    "origen": "fuentes/app.js",
+    "linea": 627,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "closeModal",
+    "origen": "fuentes/app.js",
+    "linea": 641,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "formError",
+    "origen": "fuentes/app.js",
+    "linea": 650,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "submitForm",
+    "origen": "fuentes/app.js",
+    "linea": 654,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "errorSlot",
+    "origen": "fuentes/app.js",
+    "linea": 668,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "actions",
+    "origen": "fuentes/app.js",
+    "linea": 672,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "inventory",
+    "origen": "fuentes/app.js",
+    "linea": 897,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "uiIcon",
+    "origen": "fuentes/app.js",
+    "linea": 1129,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "tableSize",
+    "origen": "fuentes/app.js",
+    "linea": 1155,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "mountPager",
+    "origen": "fuentes/app.js",
+    "linea": 1159,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "productForm",
+    "origen": "fuentes/app.js",
+    "linea": 1439,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "movementForm",
+    "origen": "fuentes/app.js",
+    "linea": 1496,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "updateMovementVariant",
+    "origen": "fuentes/app.js",
+    "linea": 1522,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "funcion": "tick",
+    "origen": "fuentes/app.js",
+    "linea": 2257,
+    "tipo": "cuerpo literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1596,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1602,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1612,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1623,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1627,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1629,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1631,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1635,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1896,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1898,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1902,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1906,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 1915,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 2005,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 2007,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "js/funciones.js",
+    "origen": "fuentes/app.js",
+    "linea": 2013,
+    "tipo": "escuchador literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-opcion-stock",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-formulario-operacion",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-formulario-prenda-2",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-vista-inventario-2",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-vista-inventario",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-formulario-prenda",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-formulario-operacion-2",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-pagination",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-acciones-formulario",
+    "tipo": "plantilla literal"
+  },
+  {
+    "destino": "index.html",
+    "origen": "index.html",
+    "plantilla": "tpl-formulario-prenda-3",
+    "tipo": "plantilla literal"
+  }
+]

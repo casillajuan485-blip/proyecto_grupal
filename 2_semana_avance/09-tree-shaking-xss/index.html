@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--
+  ATELIER: proyecto frontend de una tienda de ropa.
+  index.html = estructura; css/styles.css = presentación; js/app.js = lógica y jQuery.
+  js/pdf-report.js = diseño de reportes PDF; js/lib/ = bibliotecas externas; img/ = fotografías.
+  Edita nuestros archivos comentados. Las bibliotecas .min.js se usan tal como se descargaron.
+  Las rutas parten de este index.html, aunque las imágenes se inserten desde JavaScript.
+  Esta copia no necesita .nojekyll para ejecutarse localmente.
+  No se necesita una base de datos ni un servidor de aplicación.
+  Hora automática del dispositivo; no es una hora de servidor certificada.
+  Los colores que ves en VS Code son del editor. Los de la página están en styles.css.
+  Recursos: jQuery 3.7.1 y jsPDF 3.0.3. Licencias MIT incluidas en js/lib/.
+  Fotografías ilustrativas de images.unsplash.com; reemplazables por las de la tienda.
+  Tipografías opcionales DM Sans y Manrope de Google Fonts; alternativa local Arial.
+-->
+<html lang="es">
+  <!-- CONFIGURACIÓN: codificación, tamaño de pantalla, título y carga de CSS y JavaScript. jQuery se carga antes de app.js. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#10141c" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="img/pwa/icon-192.png" />
+    <link rel="apple-touch-icon" href="img/pwa/icon-192.png" />
+    <link rel="preload" href="css/styles.css" as="style" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>ATELIER — Clothing Hub</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pwa.css" /><link rel="stylesheet" href="css/explicacion.css" />
+    <script defer src="js/lib/jquery.min.js"></script>
+    <!-- jsPDF genera archivos PDF directamente en el navegador. La biblioteca se incluye localmente. -->
+
+
+    <!-- Validaciones y formularios guiados: se cargan antes de la lógica de la tienda. -->
+
+
+
+
+    <script type="module" src="js/compilado.js"></script>
+  </head>
+  <body class="customer-view">
+    <!-- ICONOS LOCALES. Son archivos de imagen dentro de img/iconos/ y funcionan sin conexión. -->
+    <!-- ICONOS: los dibujos están en img/iconos/; aquí solo se muestran como imágenes. -->
+    <!-- MENÚ LATERAL: identidad de la tienda y navegación. data-view indica qué pantalla abre cada botón. -->
+    <aside id="sidebar">
+      <a class="brand" href="#inventario">
+        <span class="brand-icon">A</span>
+        <span>
+          ATELIER
+          <small>CLOTHING HUB</small>
+        </span>
+      </a>
+      <div class="workspace">ESPACIO DE TRABAJO</div>
+      <!-- NAVEGACIÓN: jQuery escucha estos botones y resalta la pantalla seleccionada. -->
+      <nav aria-label="Principal">
+        
+        
+        
+        <button data-view="inventario" class="admin-only">
+          <img class="ui-icon" src="img/iconos/box.svg" alt="" aria-hidden="true" / decoding="async">
+          <span>Inventario</span>
+        </button>
+        
+        
+        
+        
+      </nav>
+      <!-- INFORMACIÓN LOCAL: los datos pertenecen a este navegador y el perfil es una demostración. -->
+      <div class="sidebar-bottom">
+        <div class="local-pill">
+          <i></i>
+        </div>
+        <div class="version">
+          PROYECTO FORMATIVO
+          <span>v1.0</span>
+        </div>
+      </div>
+    </aside>
+    <div class="shell">
+      <!-- BARRA SUPERIOR: menú hamburguesa, ruta actual, reloj, tema y notificaciones. -->
+      <header>
+        <div class="header-left">
+          <button
+            id="hamburger"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="sidebar"
+          >
+            <img class="ui-icon" src="img/iconos/menu.svg" alt="" aria-hidden="true" / decoding="async">
+          </button>
+          <span>
+            <span id="context-label">Tu tienda</span>
+            <span class="slash">/</span>
+            <strong id="breadcrumb">Vista general</strong>
+          </span>
+        </div>
+        <div class="header-right">
+          <!-- Son vistas del proyecto de demostración, no un inicio de sesión ni permisos reales. -->
+          
+          <span class="today"></span>
+          
+          
+          <button id="theme" aria-label="Cambiar tema">
+            <img class="ui-icon" src="img/iconos/sun.svg" alt="" aria-hidden="true" / decoding="async">
+          </button>
+          
+          <div class="avatar">AD</div>
+          <span class="admin">
+            <span id="profile-name">Cliente</span>
+            <small>Perfil de demostración</small>
+          </span>
+        </div>
+      </header>
+      <!-- CONTENIDO PRINCIPAL: encabezado y espacio donde se inserta la plantilla de la pantalla activa. -->
+      <main>
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">TU TIENDA, BAJO CONTROL</div>
+            <h1 id="page-title">Compilación y validación segura</h1>
+            <p id="page-description">Inventario y formulario original con validación, escape y compilación de sus módulos.</p>
+          </div>
+          <button class="primary admin-only" id="new-event">
+            <img class="ui-icon" src="img/iconos/box.svg" alt="" aria-hidden="true" / decoding="async">
+            Registrar operación
+          </button>
+        </div>
+        <p id="connection-status" class="connection-status" role="status" aria-live="polite"></p>
+        <div id="storage-warning" role="alert" hidden></div>
+        <!-- PANTALLA ACTIVA: app.js coloca aquí Inicio, Catálogo, Inventario, Ventas, Eventos o Reportes. -->
+        <section class="parte-guia"><details open><summary>Qué función de ATELIER estás viendo</summary><p>Inventario y formulario original con validación, escape y compilación de sus módulos.</p><ol><li>Pulsa Añadir prenda y escribe una etiqueta HTML en el nombre: la validación debe rechazarla.</li><li>Crea una prenda con datos válidos y comprueba que aparece en el inventario.</li><li>Consulta la comparación de compilación y las fuentes: ambos paquetes proceden de estos mismos módulos.</li></ol><p><a href="EXPLICACION.md">Explicación del código</a> · <a href="procedencia.json">Procedencia de funciones y archivos</a></p></details><p id="build-info" role="status">Compilación real: 32904 bytes sin tree shaking → 32904 bytes optimizados (0 bytes eliminados).</p><p id="parte-status" role="status"></p></section><div id="content"></div>
+        <!-- PIE DE PÁGINA: recuerda el alcance local de la aplicación. -->
+        <footer>
+          <span>
+            <i></i>
+            Guardado local · Sin conexión entre dispositivos
+          </span>
+          
+        </footer>
+      </main>
+      <!-- Accesos fijos del cliente en celular: siempre indican la sección activa. -->
+      <nav class="mobile-dock client-only" aria-label="Navegación rápida">
+        
+        
+        
+      </nav>
+    </div>
+    <!-- VENTANA MODAL: muestra formularios y confirmaciones. Se cierra con Escape y conserva el foco del teclado. -->
+    <div id="modal-overlay" style="display: none">
+      <section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-heading">
+          <h2 id="modal-title"></h2>
+          <button id="close-modal" aria-label="Cerrar ventana">✕</button>
+        </div>
+        <div id="modal-body"></div>
+      </section>
+    </div>
+    <!-- NOTIFICACIONES: avisos temporales de éxito o error. aria-live permite anunciarlos con un lector de pantalla. -->
+    <div id="toast" role="status" aria-live="polite" style="display: none"></div>
+    <!-- RESTAURACIÓN: selector oculto que recibe un respaldo JSON; se activa desde el botón de importar. -->
+    <input type="file" id="import-file" accept="application/json,.json" hidden />
+
+
+<template id="tpl-acciones-formulario">
+      <div class="form-actions">
+        <button type="button" data-close>Cancelar</button>
+        <button class="primary" type="submit"><!--ATELIER_DATO_0--></button>
+      </div>
+    </template>
+<template id="tpl-vista-inventario">
+      <div class="section-heading">
+        <div>
+          <h2>Gestión de prendas</h2>
+          <p>El stock se controla por talla y color.</p>
+        </div>
+        <button class="primary" id="add-product">＋ Nueva prenda</button>
+      </div>
+      <div class="panel table-wrap">
+        <table class="data-table" id="inventory-table">
+          <thead>
+            <tr>
+              <th>PRENDA</th>
+              <th>CATEGORÍA</th>
+              <th>PRECIO</th>
+              <th>EXISTENCIAS</th>
+              <th>ESTADO</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--ATELIER_DATO_0-->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="inventory-pagination"></div>
+    </template>
+<template id="tpl-vista-inventario-2">
+      <tr>
+        <td>
+          <!--ATELIER_DATO_0-->
+          <small>
+            <!--ATELIER_DATO_1-->
+            variantes
+          </small>
+        </td>
+        <td><!--ATELIER_DATO_2--></td>
+        <td><!--ATELIER_DATO_3--></td>
+        <td>
+          <!--ATELIER_DATO_4-->
+          uds.
+        </td>
+        <td>
+          <span class="badge"><!--ATELIER_DATO_5--></span>
+        </td>
+        <td>
+          <button data-edit="__ATELIER_DATO_6__">Editar</button>
+          <button data-stock="__ATELIER_DATO_7__">Stock</button>
+        </td>
+      </tr>
+    </template>
+<template id="tpl-formulario-prenda">
+      <form id="product-form" data-id="__ATELIER_DATO_0__">
+        <div class="form-grid">
+          <div class="field wide">
+            <label for="p-name">Nombre</label>
+            <input id="p-name" maxlength="100" required value="__ATELIER_DATO_1__" />
+          </div>
+          <div class="field">
+            <label for="p-category">Categoría</label>
+            <input
+              id="p-category"
+              list="categories"
+              maxlength="60"
+              required
+              value="__ATELIER_DATO_2__"
+            />
+            <datalist id="categories"><!--ATELIER_DATO_3--></datalist>
+          </div>
+          <div class="field">
+            <label for="p-price">Precio (Bs)</label>
+            <input
+              id="p-price"
+              type="number"
+              min="0.01"
+              max="1000000"
+              step="0.01"
+              required
+              value="__ATELIER_DATO_4__"
+            />
+          </div>
+          <div class="field">
+            <label for="p-discount">Descuento (%)</label>
+            <input
+              id="p-discount"
+              type="number"
+              min="0"
+              max="90"
+              required
+              value="__ATELIER_DATO_5__"
+            />
+          </div>
+          <div class="field">
+            <label for="p-image">Fotografía de referencia</label>
+            <select id="p-image">
+              <!--ATELIER_DATO_6-->
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="p-description">Descripción</label>
+            <!-- En textarea el marcador es texto simple, porque su contenido se interpreta como texto. -->
+            <textarea id="p-description" maxlength="1000" required>__ATELIER_DATO_7__</textarea>
+          </div>
+          <!--ATELIER_DATO_8-->
+        </div>
+        <!--ATELIER_DATO_9-->
+      </form>
+    </template>
+<template id="tpl-formulario-prenda-2"><option value="__ATELIER_DATO_0__"></option></template>
+<template id="tpl-formulario-prenda-3">
+      <option value="__ATELIER_DATO_0__" data-atelier-dato-1=""><!--ATELIER_DATO_2--></option>
+    </template>
+<template id="tpl-formulario-operacion">
+      <form id="movement-form">
+        <div class="form-grid">
+          <div class="field wide">
+            <label for="movement-type">Tipo de operación</label>
+            <select id="movement-type">
+              <option value="Entrada">Entrada de mercadería</option>
+              <option value="Ajuste">Ajuste de inventario (cantidad final)</option>
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="movement-product">Prenda</label>
+            <select id="movement-product">
+              <!--ATELIER_DATO_0-->
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="movement-variant">Talla y color</label>
+            <select id="movement-variant"></select>
+          </div>
+          <div class="field">
+            <label for="movement-qty" id="qty-label">Unidades a ingresar</label>
+            <input id="movement-qty" type="number" min="1" max="1000000" value="1" required />
+          </div>
+          <div class="field wide">
+            <label for="movement-reason">Motivo (mín. 4 caracteres)</label>
+            <textarea
+              id="movement-reason"
+              minlength="4"
+              maxlength="200"
+              required
+              placeholder="Ej. Reposición de temporada"
+            ></textarea>
+          </div>
+        </div>
+        <p style="font-size: 11px">Para ventas y devoluciones, usa la sección Ventas y carrito.</p>
+        <!--ATELIER_DATO_1-->
+      </form>
+    </template>
+<template id="tpl-formulario-operacion-2">
+      <option value="__ATELIER_DATO_0__" data-atelier-dato-1="">
+        <!--ATELIER_DATO_2-->
+        <!--ATELIER_DATO_3-->
+      </option>
+    </template>
+<template id="tpl-opcion-stock">
+      <option value="__ATELIER_DATO_0__">
+        <!--ATELIER_DATO_1-->
+        /
+        <!--ATELIER_DATO_2-->
+        ·
+        <!--ATELIER_DATO_3-->
+        uds.
+      </option>
+    </template>
+<template id="tpl-pagination">
+      <div class="pagination compact-pagination">
+        <span aria-live="polite"><!--ATELIER_DATO_1--></span>
+        <div>
+          <button
+            data-paginate="__ATELIER_DATO_0__"
+            data-direction="-1"
+            data-atelier-dato-2=""
+            aria-label="Página anterior"
+          >
+            <img class="ui-icon" src="img/iconos/left.svg" alt="" aria-hidden="true" / decoding="async">
+            <span>Anterior</span>
+          </button>
+          <button
+            data-paginate="__ATELIER_DATO_0__"
+            data-direction="1"
+            data-atelier-dato-3=""
+            aria-label="Página siguiente"
+          >
+            <span>Siguiente</span>
+            <img class="ui-icon" src="img/iconos/right.svg" alt="" aria-hidden="true" / decoding="async">
+          </button>
+        </div>
+      </div>
+    </template>
+</body></html>

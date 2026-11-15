@@ -1,0 +1,11 @@
+{
+  "name": "atelier-inventario-separado",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node herramientas/compilar.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}
