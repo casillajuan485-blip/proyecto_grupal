@@ -1,0 +1,3333 @@
+/* HOJA DE ESTILOS. Aquí cambias la apariencia; no los colores del editor de VS Code.
+   Busca PALETA OSCURA o PALETA CLARA para personalizar la tienda. */
+/* TIPOGRAFÍAS. Carga DM Sans y Manrope si hay conexión; Arial sirve como alternativa local. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+/* PALETA OSCURA. Variables compartidas: fondo, paneles, texto, bordes, verde de acento y sombras. Cambia aquí los colores reales de la página. */
+:root {
+  --bg: #10141c;
+  --panel: #191f29;
+  --panel2: #202733;
+  --line: #2c3441;
+  --text: #f0f2f6;
+  --muted: #939cab;
+  --accent: #a5f0cf;
+  --accent-dark: #183c32;
+  --sidebar: #141922;
+  --red: #f5a6ab;
+  --shadow: 0 12px 36px #0002;
+}
+/* MEDIDAS PREDECIBLES. Incluye relleno y borde dentro del ancho y alto de cada elemento. */
+* {
+  box-sizing: border-box;
+}
+/* ESTILO GENERAL. Quita el margen inicial del navegador y establece fondo, texto y tipografía. */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    14px 'DM Sans',
+    Arial,
+    sans-serif;
+}
+/* PALETA CLARA. Al añadir la clase light al body, estas variables reemplazan las oscuras sin duplicar toda la hoja. */
+body.light {
+  --bg: #f3f5f7;
+  --panel: #fff;
+  --panel2: #edf1f4;
+  --line: #dce2e8;
+  --text: #202936;
+  --muted: #657183;
+  --accent: #187656;
+  --accent-dark: #dcf3e8;
+  --sidebar: #fff;
+  --red: #ba3e54;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+button {
+  cursor: pointer;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: var(--panel2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. Este estado se activa al pasar el puntero. */
+button:hover {
+  border-color: var(--muted);
+  transform: translateY(-1px);
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. Este estado muestra que el control no está disponible. */
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* ACCESIBILIDAD. Dibuja un contorno visible cuando se navega con el teclado. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+#sidebar {
+  position: fixed;
+  width: 238px;
+  inset: 0 auto 0 0;
+  background: var(--sidebar);
+  border-right: 1px solid var(--line);
+  padding: 34px 20px;
+  z-index: 20;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font:
+    800 21px Manrope,
+    Arial;
+  letter-spacing: 3px;
+  padding: 0 5px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.brand-icon {
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 500;
+  width: 41px;
+  height: 47px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 12px 2px 12px 2px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.brand small {
+  display: block;
+  font:
+    9px 'DM Sans',
+    Arial;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.workspace {
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  color: var(--muted);
+  margin: 52px 12px 18px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+nav {
+  display: grid;
+  gap: 8px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+nav button {
+  display: flex;
+  text-align: left;
+  gap: 13px;
+  align-items: center;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  padding: 14px 13px;
+  font-size: 16px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+nav button span {
+  font-size: 12px;
+  font-weight: 500;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+nav button.active {
+  background: var(--accent-dark);
+  color: var(--accent);
+  box-shadow: inset 3px 0 var(--accent);
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+nav b {
+  margin-left: auto;
+  background: var(--panel);
+  font-size: 10px;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.sidebar-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 25px;
+  right: 25px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.local-pill {
+  font-size: 11px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.local-pill i,
+footer i {
+  display: inline-block;
+  background: var(--accent);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.sidebar-bottom p {
+  font-size: 10px;
+  color: var(--muted);
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.sidebar-bottom button {
+  border: 0;
+  background: none;
+  padding: 15px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.version {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+/* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. */
+.version span {
+  float: right;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.shell {
+  margin-left: 238px;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+header {
+  height: 86px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 34px;
+  font-size: 11px;
+  color: var(--muted);
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+.slash {
+  padding: 0 15px;
+  color: var(--line);
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+header strong {
+  font-weight: 500;
+  color: var(--text);
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+header button {
+  border: 0;
+  background: none;
+  padding: 7px;
+  font-size: 22px;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+#notifications {
+  position: relative;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+#notifications i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  right: 8px;
+  top: 6px;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+.avatar {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  background: #b6c8bc;
+  color: #263c30;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+.admin {
+  color: var(--text);
+  font-size: 11px;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+.admin small {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+/* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. */
+#hamburger {
+  display: none;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+main {
+  padding: 34px;
+  max-width: 1750px;
+  margin: auto;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.eyebrow {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+h1 {
+  font:
+    700 29px Manrope,
+    Arial;
+  letter-spacing: -1px;
+  margin: 9px 0;
+}
+/* PÁRRAFOS. Ajusta el color secundario y la separación entre líneas para facilitar la lectura. */
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.page-heading p {
+  font-size: 12px;
+  margin: 0;
+}
+/* ESTILO AUXILIAR. Ajusta este componente de la interfaz. */
+.primary {
+  background: var(--accent);
+  color: #112c23;
+  border: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 13px 17px;
+}
+/* ESTILO AUXILIAR. Ajusta este componente de la interfaz. */
+body.light .primary {
+  color: #fff;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+  margin-bottom: 25px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric {
+  padding: 20px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric-icon {
+  font-size: 18px;
+  color: var(--accent);
+  background: var(--accent-dark);
+  border-radius: 8px;
+  padding: 7px 9px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric-value {
+  font:
+    700 26px Manrope,
+    Arial;
+  margin: 12px 0 9px;
+  letter-spacing: -0.5px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric-note {
+  color: var(--muted);
+  font-size: 10px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.metric-note em {
+  font-style: normal;
+  color: var(--accent);
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.progress {
+  height: 5px;
+  background: var(--panel2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+/* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. */
+.progress div {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 10px;
+}
+/* ESTILO AUXILIAR. Ajusta este componente de la interfaz. */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 285px;
+  gap: 23px;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 17px;
+  gap: 10px;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.section-heading h2,
+.panel h2 {
+  font:
+    700 15px Manrope,
+    Arial;
+  margin: 0;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.section-heading p {
+  font-size: 10px;
+  margin: 5px 0 0;
+}
+/* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. */
+.section-heading button {
+  font-size: 10px;
+  background: none;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product {
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--panel);
+  overflow: hidden;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Este estado se activa al pasar el puntero. */
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.photo {
+  height: 181px;
+  position: relative;
+  overflow: hidden;
+  background: #d4d3cf;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. object-fit recorta la fotografía sin deformarla. */
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Este estado se activa al pasar el puntero. */
+.product:hover img {
+  transform: scale(1.04);
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.tag {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #19251ed9;
+  color: #c8eed9;
+  padding: 5px 7px;
+  border-radius: 4px;
+  font-size: 8px;
+  letter-spacing: 0.6px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product-info {
+  padding: 14px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product-category {
+  color: var(--muted);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product h3 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 7px 0 9px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.price {
+  font:
+    700 15px Manrope,
+    Arial;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.stock {
+  font-size: 9px;
+  color: var(--muted);
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.stock.low {
+  color: #efbf7c;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.product-actions button {
+  font-size: 10px;
+  padding: 7px 10px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.dots {
+  display: flex;
+  gap: 4px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.dot {
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  border: 1px solid #ffffff40;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.rail {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.panel {
+  padding: 19px;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 17px;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.quick-grid button {
+  min-height: 87px;
+  text-align: left;
+  background: var(--panel2);
+  padding: 12px;
+  font-size: 10px;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.quick-grid button span {
+  display: block;
+  color: var(--accent);
+  font-size: 23px;
+  margin-bottom: 9px;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.quick-grid button:nth-child(2) span {
+  color: #b7b0f0;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.quick-grid button:nth-child(3) span {
+  color: #88c5e9;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.quick-grid button:nth-child(4) span {
+  color: #e5bf86;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.rail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.live {
+  font-size: 8px;
+  color: var(--accent);
+  background: var(--accent-dark);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.feed-row {
+  display: flex;
+  gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.feed-row:last-child {
+  border: 0;
+  padding-bottom: 0;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.feed-icon {
+  width: 27px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--accent-dark);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.feed-row strong {
+  font-size: 10px;
+  font-weight: 500;
+  display: block;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.feed-row p {
+  font-size: 9px;
+  margin: 4px 0;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.feed-row small {
+  font-size: 8px;
+  color: var(--muted);
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.backup-card {
+  background: linear-gradient(125deg, var(--accent-dark), var(--panel));
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.backup-card p {
+  font-size: 10px;
+}
+/* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. */
+.backup-card button {
+  font-size: 10px;
+}
+/* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. */
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+/* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. */
+.toolbar input {
+  flex: 1;
+  min-width: 190px;
+}
+/* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. */
+.toolbar select {
+  max-width: 180px;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+input,
+select,
+textarea {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--text);
+  padding: 11px 12px;
+  min-width: 0;
+}
+/* CONTROLES COMPARTIDOS. Mantiene botones, enlaces y campos coherentes en todas las pantallas. */
+input::placeholder {
+  color: var(--muted);
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. */
+.catalog-products {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+/* ESTADO VACÍO. Centra el mensaje cuando no hay productos, ventas o coincidencias. */
+.empty {
+  text-align: center;
+  padding: 45px;
+  color: var(--muted);
+  grid-column: 1/-1;
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.table-wrap {
+  overflow-x: auto;
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 11px;
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.data-table th {
+  text-align: left;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.data-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid var(--line);
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.data-table td small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.data-table button {
+  font-size: 10px;
+  padding: 6px 9px;
+}
+/* ETIQUETAS DE ESTADO. Resalta estados como activo, pendiente o confirmado. */
+.badge {
+  display: inline-block;
+  font-size: 9px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: var(--accent-dark);
+  color: var(--accent);
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 11px;
+  color: var(--muted);
+}
+/* TABLAS. Hace legibles las filas y permite desplazarlas horizontalmente en pantallas pequeñas. */
+.pagination button {
+  margin-left: 7px;
+  font-size: 11px;
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+.notice {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 7px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+/* VENTAS. Distribuye el carrito y su resumen de cantidades, entrega e importe. */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 22px;
+}
+/* VENTAS. Distribuye el carrito y su resumen de cantidades, entrega e importe. */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  color: var(--muted);
+}
+/* VENTAS. Distribuye el carrito y su resumen de cantidades, entrega e importe. */
+.summary-row.total {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  color: var(--text);
+  font-size: 20px;
+}
+/* VENTAS. Distribuye el carrito y su resumen de cantidades, entrega e importe. */
+.full {
+  width: 100%;
+}
+/* ACCIÓN DE RIESGO. Utiliza el color de error para advertir visualmente. */
+.danger {
+  color: var(--red);
+}
+/* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. */
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+/* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. */
+.bar-row {
+  margin-top: 20px;
+}
+/* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. */
+.bar-row label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+/* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. */
+.bar-row .progress {
+  height: 9px;
+}
+/* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. */
+.report-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+/* PIE DE PÁGINA. Presenta la identificación y el recordatorio de almacenamiento local. */
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 9px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: #070b13bb;
+  backdrop-filter: blur(7px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+#modal {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  width: 520px;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: 0 25px 100px #0008;
+  padding: 26px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.modal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.modal-heading h2 {
+  font-size: 20px;
+  margin: 0;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.modal-heading button {
+  background: none;
+  border: 0;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.field label {
+  font-size: 11px;
+  color: var(--muted);
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.field.wide {
+  grid-column: 1/-1;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: var(--bg);
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 23px;
+}
+/* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. object-fit recorta la fotografía sin deformarla. */
+.detail-photo {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+.validation {
+  color: var(--red);
+  font-size: 12px;
+  margin-top: 15px;
+}
+/* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. */
+[aria-invalid='true'] {
+  border-color: var(--red);
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+#toast {
+  position: fixed;
+  bottom: 26px;
+  right: 28px;
+  background: var(--accent-dark);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 15px 22px;
+  border-radius: 10px;
+  z-index: 150;
+  font-size: 12px;
+  max-width: calc(100vw - 40px);
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+.guided {
+  box-shadow: 0 0 0 3px var(--accent);
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+.contact-panel {
+  font-size: 12px;
+  padding-top: 10px;
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+.demo-banner {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+.demo-banner p {
+  margin: 0;
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+.demo-banner button {
+  white-space: nowrap;
+  font-size: 10px;
+}
+/* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. */
+#storage-warning {
+  background: #602833;
+  color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+/* RELOJ. Usa dígitos de ancho uniforme para evitar movimientos al cambiar los números. */
+.clock {
+  font-variant-numeric: tabular-nums;
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media (min-width: 1500px) {
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .photo {
+    height: 235px;
+  }
+  /* ESTILO AUXILIAR. Ajusta este componente de la interfaz. Variante para [object Object]. */
+  .dashboard-layout {
+    grid-template-columns: 1fr 310px;
+  }
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media (max-width: 1200px) {
+  /* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. Variante para [object Object]. */
+  #sidebar {
+    width: 205px;
+    padding: 30px 14px;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .shell {
+    margin-left: 205px;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  main {
+    padding: 25px;
+  }
+  /* ESTILO AUXILIAR. Ajusta este componente de la interfaz. Variante para [object Object]. */
+  .dashboard-layout {
+    grid-template-columns: 1fr 250px;
+    gap: 17px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .catalog-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  .today {
+    display: none;
+  }
+  /* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. Variante para [object Object]. */
+  .metrics {
+    gap: 10px;
+  }
+  /* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. Variante para [object Object]. */
+  .metric {
+    padding: 16px;
+  }
+  /* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. Variante para [object Object]. */
+  .metric-value {
+    font-size: 23px;
+  }
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media (max-width: 900px) {
+  /* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. Variante para [object Object]. */
+  #sidebar {
+    display: none;
+    top: 72px;
+    width: 238px;
+    box-shadow: 10px 0 50px #0005;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .shell {
+    margin: 0;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  header {
+    height: 72px;
+    padding: 0 22px;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  #hamburger {
+    display: block;
+  }
+  /* ESTILO AUXILIAR. Ajusta este componente de la interfaz. Variante para [object Object]. */
+  .dashboard-layout {
+    grid-template-columns: 1fr 260px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .catalog-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media (max-width: 650px) {
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  main {
+    padding: 23px 16px;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  header {
+    padding: 0 14px;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  .admin,
+  .header-left > span,
+  .today {
+    display: none;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  .header-right {
+    gap: 10px;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .page-heading {
+    align-items: flex-start;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .page-heading h1 {
+    font-size: 25px;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .page-heading p {
+    font-size: 11px;
+    max-width: 210px;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .page-heading .primary {
+    max-width: 117px;
+    padding: 11px;
+    line-height: 1.5;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .eyebrow {
+    font-size: 8px;
+  }
+  /* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. Variante para [object Object]. */
+  .metrics {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  /* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. Variante para [object Object]. */
+  .metric-value {
+    font-size: 23px;
+  }
+  /* ESTILO AUXILIAR. Ajusta este componente de la interfaz. Variante para [object Object]. */
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+  /* PANELES DEL TABLERO. Organiza acciones rápidas, actividad reciente y respaldo. Variante para [object Object]. */
+  .rail {
+    grid-template-columns: 1fr;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .products,
+  .catalog-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .photo {
+    height: 175px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .product-info {
+    padding: 11px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .product h3 {
+    font-size: 11px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .stock {
+    font-size: 8px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .product-actions {
+    gap: 5px;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .product-actions button {
+    font-size: 9px;
+    padding: 7px;
+  }
+  /* VENTAS. Distribuye el carrito y su resumen de cantidades, entrega e importe. Variante para [object Object]. */
+  .cart-layout,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+  /* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. Variante para [object Object]. */
+  .toolbar select {
+    max-width: none;
+    flex: 1;
+    width: 45%;
+  }
+  /* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. Variante para [object Object]. */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  /* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. Variante para [object Object]. */
+  .field.wide {
+    grid-column: auto;
+  }
+  /* MENSAJES. Diferencia avisos, errores, demostración y resaltados temporales. Variante para [object Object]. */
+  .demo-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  /* PIE DE PÁGINA. Presenta la identificación y el recordatorio de almacenamiento local. Variante para [object Object]. */
+  footer {
+    gap: 15px;
+    line-height: 1.7;
+    font-size: 8px;
+  }
+  /* FORMULARIOS Y DIÁLOGOS. Define campos, botones, ventana superpuesta y mensajes de validación. Variante para [object Object]. */
+  #modal {
+    padding: 20px;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  .header-left {
+    gap: 0;
+  }
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media (prefers-reduced-motion: reduce) {
+  /* ESTILO AUXILIAR. Ajusta este componente de la interfaz. Variante para [object Object]. */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media print {
+  /* MENÚ LATERAL. Define la identidad, la navegación y los datos del espacio local. Variante para [object Object]. */
+  #sidebar,
+  header,
+  .page-heading button,
+  .report-actions,
+  footer,
+  #toast {
+    display: none !important;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .shell {
+    margin: 0;
+  }
+  /* ESTILO GENERAL. Quita el margen inicial del navegador y establece fondo, texto y tipografía. Variante para [object Object]. */
+  body {
+    --bg: #fff;
+    --text: #111;
+    --panel: #fff;
+    --panel2: #eee;
+    --muted: #444;
+    --line: #ccc;
+    --accent: #256747;
+    --accent-dark: #e1eee5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* INDICADORES. Presenta las cifras del negocio y la barra de avance hacia 200 eventos. Variante para [object Object]. */
+  .panel,
+  .metric {
+    break-inside: avoid;
+  }
+  /* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. Variante para [object Object]. */
+  .report-grid {
+    display: block;
+  }
+  /* REPORTES. Distribuye los resúmenes y las barras proporcionales de ventas y existencias. Variante para [object Object]. */
+  .report-grid .panel {
+    margin-bottom: 20px;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  main {
+    padding: 0;
+  }
+  /* DISTRIBUCIÓN PRINCIPAL. Establece el espacio del contenido y la jerarquía de títulos. Variante para [object Object]. */
+  .page-heading p::after {
+    content: ' · Fecha del dispositivo: ' attr(data-date);
+  }
+}
+/* ADAPTACIÓN. Aplica estas reglas solo cuando se cumple [object Object]. */
+@media (max-width: 650px) {
+  /* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. Variante para [object Object]. */
+  .toolbar select {
+    flex: 1 1 calc(50% - 10px);
+    width: calc(50% - 10px);
+  }
+  /* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. Variante para [object Object]. */
+  .toolbar > input:not([type='checkbox']) {
+    flex-basis: 100%;
+  }
+  /* FILTROS. Distribuye campos, selectores y botones para buscar y ordenar prendas o eventos. Variante para [object Object]. */
+  .toolbar .field {
+    flex: 1 1 100%;
+  }
+  /* BARRA SUPERIOR. Ordena la navegación móvil, reloj, cambio de tema y perfil de demostración. Variante para [object Object]. */
+  .header-right {
+    flex-shrink: 0;
+  }
+  /* CATÁLOGO. Presenta las tarjetas, fotografías, precios, variantes y disponibilidad de las prendas. Variante para [object Object]. */
+  .product .price {
+    font-size: 13px;
+  }
+}
+
+/* SEPARACIÓN DE VISTAS. Cambia la experiencia visual, no los permisos de acceso. */
+.client-only {
+  display: none;
+}
+body.customer-view .client-only {
+  display: flex;
+}
+body.customer-view .admin-only {
+  display: none !important;
+}
+/* SELECTOR DE VISTA. aria-pressed identifica el modo actual para teclado y lectores. */
+.mode-switch {
+  display: flex;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+}
+.mode-switch button {
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  background: transparent;
+  color: var(--muted);
+}
+.mode-switch button[aria-pressed='true'] {
+  background: var(--accent-dark);
+  color: var(--accent);
+}
+/* NAVEGACIÓN COMERCIAL. El cliente utiliza una barra horizontal con tres destinos. */
+.customer-view #sidebar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  border-right: 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--sidebar);
+}
+.customer-view #sidebar nav {
+  display: flex;
+  gap: 12px;
+}
+.customer-view #sidebar nav button {
+  padding: 12px 18px;
+}
+.customer-view #sidebar nav button.active {
+  box-shadow: inset 0 -2px var(--accent);
+}
+.customer-view .sidebar-bottom,
+.customer-view .workspace {
+  display: none;
+}
+.customer-view .shell {
+  margin-left: 0;
+}
+.customer-view header {
+  height: 68px;
+  padding: 0 5%;
+}
+.customer-view main {
+  max-width: 1440px;
+  padding: 30px 5% 24px;
+}
+.customer-view .today {
+  display: none;
+}
+.customer-view[data-page='tienda'] .page-heading {
+  display: none;
+}
+/* PORTADA DE MODA. Fondo editorial cálido, texto legible y fotografías de la colección. */
+.fashion-hero {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #e8e5dd;
+  color: #253830;
+  min-height: 470px;
+  margin-bottom: 26px;
+  border: 1px solid #ffffff15;
+}
+.hero-copy {
+  padding: 50px 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.collection-pill {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #506357;
+  font-weight: 700;
+}
+.hero-copy h1 {
+  font-size: clamp(36px, 4.6vw, 66px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -3px;
+  margin: 23px 0;
+}
+.hero-copy p {
+  max-width: 370px;
+  color: #5d6960;
+  font-size: 13px;
+  margin: 0 0 25px;
+  line-height: 1.9;
+}
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-buttons .primary {
+  background: #254f3e;
+  color: #fff;
+  padding: 15px 20px;
+  font-size: 12px;
+}
+.hero-buttons > span {
+  max-width: 105px;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #5d6960;
+}
+.hero-trust {
+  display: flex;
+  gap: 18px;
+  margin-top: 40px;
+  font-size: 9px;
+  color: #637065;
+}
+.hero-photos {
+  position: relative;
+  min-height: 460px;
+  background: #d8d8cd;
+}
+.hero-photo-main {
+  position: absolute;
+  width: 68%;
+  height: 88%;
+  object-fit: cover;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 90px;
+}
+.hero-photo-small {
+  position: absolute;
+  width: 46%;
+  height: 54%;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  border: 7px solid #e8e5dd;
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+}
+.hero-caption {
+  position: absolute;
+  bottom: 27px;
+  right: 21px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #334d3d;
+  background: #e8e5ddec;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+.hero-caption strong {
+  font-size: 14px;
+}
+/* CATEGORÍAS. Botones grandes y directos para entrar al catálogo filtrado. */
+.category-strip {
+  padding: 18px 0 30px;
+  margin-bottom: 10px;
+}
+.category-strip > span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  margin-bottom: 13px;
+}
+.category-strip > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.category-strip button {
+  border-radius: 24px;
+  padding: 11px 21px;
+  background: var(--panel);
+  font-size: 11px;
+}
+.customer-view .section-heading h2 {
+  font-size: 22px;
+  margin-top: 9px;
+  letter-spacing: -0.6px;
+}
+.customer-view .product .photo {
+  height: 245px;
+}
+.customer-view .product h3 {
+  font-size: 13px;
+}
+.customer-view .product-info {
+  padding: 17px;
+}
+/* AYUDA PARA COMPRAR. Explica el recorrido sin lenguaje técnico ni pasos ocultos. */
+.shopping-help {
+  padding: 35px 0 15px;
+  margin-top: 25px;
+}
+.shopping-help > span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.shopping-help > h2 {
+  font:
+    700 23px Manrope,
+    Arial;
+  letter-spacing: -0.5px;
+}
+.shopping-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.shopping-steps article {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 23px;
+  border-radius: 12px;
+}
+.shopping-steps b {
+  color: var(--accent);
+  font-size: 12px;
+}
+.shopping-steps h3 {
+  font-size: 14px;
+  margin: 16px 0 8px;
+}
+.shopping-steps p {
+  font-size: 12px;
+  margin: 0;
+}
+/* CONFIRMACIÓN. El comprador reconoce su pedido sin entrar al panel administrativo. */
+.order-notice {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.order-notice strong {
+  color: var(--text);
+}
+.order-notice small {
+  color: var(--muted);
+}
+/* TABLET. La portada conserva su jerarquía y deja espacio para el selector de vista. */
+@media (max-width: 1000px) {
+  .hero-copy {
+    padding: 35px 28px;
+  }
+  .hero-trust {
+    gap: 10px;
+    font-size: 8px;
+  }
+  .customer-view .catalog-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .customer-view .product .photo {
+    height: 250px;
+  }
+}
+/* MENÚ MÓVIL. La barra comercial se convierte en un menú lateral desplegable. */
+@media (max-width: 900px) {
+  .customer-view #sidebar {
+    display: none;
+    position: fixed;
+    top: 72px;
+    height: auto;
+    bottom: 0;
+    width: 238px;
+    padding: 25px 16px;
+    overflow-y: auto;
+    box-shadow: 10px 0 40px #0005;
+  }
+  .customer-view #sidebar .brand {
+    margin: 5px 0 28px;
+  }
+  .customer-view #sidebar nav {
+    display: grid;
+    gap: 10px;
+  }
+  .customer-view #sidebar nav button {
+    width: 100%;
+  }
+  .customer-view header {
+    height: 72px;
+    padding: 0 18px;
+  }
+  .customer-view main {
+    padding: 22px;
+  }
+  .mode-switch button {
+    padding: 8px 10px;
+  }
+  .fashion-hero {
+    min-height: 410px;
+  }
+  .hero-photos {
+    min-height: 410px;
+  }
+  .hero-copy h1 {
+    font-size: 42px;
+  }
+}
+/* CELULAR. Una sola columna para portada y ayuda; dos tarjetas de producto por fila. */
+@media (max-width: 650px) {
+  .mode-switch {
+    padding: 3px;
+  }
+  .mode-switch button {
+    font-size: 10px;
+    padding: 8px 9px;
+  }
+  .customer-view main {
+    padding: 17px 15px;
+  }
+  .customer-view header {
+    padding: 0 13px;
+  }
+  .fashion-hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-copy {
+    padding: 32px 25px 24px;
+  }
+  .hero-copy h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+    margin: 19px 0;
+  }
+  .hero-copy p {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .hero-trust {
+    margin-top: 25px;
+    gap: 16px;
+  }
+  .hero-photos {
+    min-height: 275px;
+  }
+  .hero-photo-main {
+    width: 65%;
+    height: 100%;
+    border-radius: 50px 0 0 0;
+  }
+  .hero-photo-small {
+    width: 42%;
+    height: 80%;
+    border-top: 6px solid #e8e5dd;
+  }
+  .hero-caption {
+    display: none;
+  }
+  .category-strip {
+    padding: 10px 0 22px;
+  }
+  .category-strip > div {
+    gap: 8px;
+  }
+  .category-strip button {
+    padding: 9px 13px;
+    font-size: 10px;
+  }
+  .customer-view .section-heading h2 {
+    font-size: 19px;
+  }
+  .customer-view .section-heading > button {
+    max-width: 100px;
+    line-height: 1.6;
+  }
+  .customer-view .product .photo {
+    height: 180px;
+  }
+  .customer-view .product-info {
+    padding: 12px;
+  }
+  .customer-view .product h3 {
+    font-size: 11px;
+  }
+  .shopping-steps {
+    grid-template-columns: 1fr;
+  }
+  .shopping-help > h2 {
+    font-size: 20px;
+  }
+}
+/* IMPRESIÓN MANUAL. El PDF descargable utiliza su propio formato en pdf-report.js. */
+@media print {
+  .mode-switch,
+  .fashion-hero,
+  .category-strip,
+  .shopping-help {
+    display: none !important;
+  }
+}
+
+/* UI COMPACTA. Se reducen bloques repetidos; nunca se bloquea el scroll necesario por zoom o teclado. */
+[hidden] {
+  display: none !important;
+}
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ui-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  display: inline-block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+}
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+nav button {
+  justify-content: flex-start;
+}
+nav button .ui-icon {
+  width: 19px;
+  height: 19px;
+}
+nav button.active {
+  border: 1px solid var(--accent);
+  font-weight: 700;
+}
+/* ENCABEZADOS FIJOS. Los destinos y el estado activo permanecen a mano. */
+header {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  z-index: 25;
+  background: var(--bg);
+  padding: 0 25px;
+}
+main {
+  padding: 22px 25px 14px;
+}
+.page-heading {
+  margin-bottom: 18px;
+}
+.page-heading h1 {
+  font-size: 25px;
+  margin: 6px 0;
+}
+.page-heading p {
+  font-size: 12px;
+}
+.eyebrow {
+  font-size: 9px;
+}
+footer {
+  margin-top: 18px;
+  padding-top: 12px;
+}
+.customer-view #sidebar {
+  height: 62px;
+  z-index: 30;
+}
+.customer-view header {
+  top: 62px;
+  height: 48px;
+  padding: 0 4%;
+}
+.customer-view main {
+  padding: 17px 4% 12px;
+}
+.customer-view .brand {
+  font-size: 18px;
+}
+.customer-view .brand-icon {
+  width: 34px;
+  height: 38px;
+  font-size: 26px;
+}
+.customer-view #sidebar nav {
+  gap: 8px;
+}
+.customer-view #sidebar nav button {
+  padding: 10px 16px;
+  border: 1px solid transparent;
+}
+.customer-view #sidebar nav button.active {
+  border-color: var(--accent);
+}
+.customer-view .admin {
+  display: none;
+}
+.mode-switch {
+  padding: 3px;
+}
+.mode-switch button {
+  padding: 6px 11px;
+}
+.customer-view .avatar {
+  width: 29px;
+  height: 29px;
+  font-size: 10px;
+}
+/* PORTADA RESUMIDA. La ayuda se abre con jQuery en un diálogo, en lugar de apilar más secciones. */
+.fashion-hero {
+  min-height: 220px;
+  margin-bottom: 14px;
+  position: relative;
+  grid-template-columns: 1.1fr 1fr;
+}
+.hero-copy {
+  padding: 22px 28px;
+}
+.hero-copy h1 {
+  font-size: 35px;
+  margin: 10px 0;
+  line-height: 1.06;
+  letter-spacing: -1.6px;
+}
+.hero-copy p {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 13px;
+  max-width: 440px;
+}
+.hero-buttons .primary {
+  padding: 11px 16px;
+  font-size: 11px;
+}
+.hero-trust,
+.hero-caption {
+  display: none;
+}
+.hero-photos {
+  min-height: 220px;
+}
+.hero-photo-main {
+  height: 100%;
+  width: 67%;
+  border-radius: 0 0 0 46px;
+}
+.hero-photo-small {
+  height: 83%;
+  width: 44%;
+  border-width: 5px;
+}
+.shopping-help-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f5f3eced;
+  color: #294d3c;
+  padding: 7px 10px;
+  font-size: 10px;
+  border-color: #d6dbd0;
+  z-index: 2;
+}
+.shopping-help-button .ui-icon {
+  width: 15px;
+  height: 15px;
+}
+.category-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 0 14px;
+  margin-bottom: 0;
+}
+.category-strip > span {
+  margin: 0;
+  font-size: 8px;
+  white-space: nowrap;
+}
+.category-strip > div {
+  gap: 7px;
+}
+.category-strip button {
+  padding: 8px 13px;
+  font-size: 10px;
+}
+.customer-view .section-heading {
+  margin-bottom: 10px;
+}
+.customer-view .section-heading h2 {
+  font-size: 18px;
+  margin-top: 3px;
+}
+.home-featured .section-heading p {
+  display: none;
+}
+/* TARJETAS. Fotografías más breves, precios legibles y detalle al pasar el mouse o enfocar con Tab. */
+.products,
+.catalog-products {
+  gap: 13px;
+}
+.catalog-products,
+.customer-view .catalog-products {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.photo,
+.customer-view .product .photo {
+  height: 156px;
+}
+.product-info,
+.customer-view .product-info {
+  padding: 11px 12px;
+}
+.product h3,
+.customer-view .product h3 {
+  font-size: 12px;
+  margin: 5px 0 8px;
+}
+.price {
+  font-size: 14px;
+}
+.stock {
+  font-size: 10px;
+}
+.product-actions {
+  padding-top: 8px;
+  margin-top: 8px;
+  min-height: 18px;
+}
+.product-actions > button {
+  display: none;
+}
+.photo-detail {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  white-space: nowrap;
+  background: #fcfdf8ed;
+  color: #1c4937;
+  border: 1px solid #fff9;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 2;
+  box-shadow: 0 5px 20px #0002;
+}
+.photo-detail:hover {
+  transform: translateX(-50%);
+  border-color: #294d3c;
+}
+.product:focus-within .photo-detail {
+  opacity: 1 !important;
+}
+.product:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.product:hover {
+  transform: translateY(-2px);
+}
+.product:hover img {
+  transform: scale(1.045);
+}
+.photo-detail .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+/* PÁGINAS CORTAS. Se recorre el catálogo y los historiales por lotes en lugar de crear listas enormes. */
+.toolbar {
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.toolbar input,
+.toolbar select {
+  padding: 10px 11px;
+  font-size: 12px;
+}
+#catalog-filters > input {
+  flex: 1 1 220px;
+}
+#catalog-filters > select {
+  flex: 0 1 180px;
+}
+#extra-filters {
+  background: var(--panel);
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+#extra-filters > input,
+#extra-filters > select {
+  flex: 1 1 130px;
+  max-width: none;
+}
+.compact-pagination {
+  margin-top: 14px;
+  padding: 11px 0 0;
+  border-top: 1px solid var(--line);
+  gap: 12px;
+}
+.compact-pagination > div {
+  display: flex;
+  gap: 7px;
+}
+.compact-pagination button {
+  min-height: 38px;
+  padding: 7px 12px;
+  font-size: 11px;
+  margin-left: 0;
+}
+.compact-pagination button .ui-icon {
+  width: 15px;
+  height: 15px;
+}
+.data-table th {
+  padding: 10px 12px;
+}
+.data-table td {
+  padding: 11px 12px;
+  font-size: 11px;
+}
+.data-table td small {
+  margin-top: 3px;
+}
+/* APARTADOS VISIBLES. Un grupo de botones con icono, etiqueta y estado seleccionado. */
+.section-switch {
+  display: flex;
+  gap: 7px;
+  margin: 0 0 15px;
+  padding: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  width: fit-content;
+}
+.section-switch button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 9px 15px;
+}
+.section-switch button[aria-pressed='true'] {
+  background: var(--accent-dark);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.report-explain {
+  font-size: 10px;
+  margin-bottom: 12px;
+  background: none;
+}
+#report-content[data-section='ventas'],
+#report-content[data-section='backup'] {
+  grid-template-columns: 1fr;
+}
+#report-content[data-section='ventas'] > .panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 30px;
+}
+#report-content[data-section='ventas'] > .panel > h2 {
+  grid-column: 1/-1;
+}
+.bar-row {
+  margin-top: 14px;
+}
+.bar-row .progress {
+  height: 7px;
+  margin-top: 8px;
+}
+.report-actions {
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.report-actions button {
+  font-size: 11px;
+}
+/* TABLERO DEL ADMINISTRADOR. Prioriza indicadores y acciones, sin duplicar todo el catálogo. */
+.metrics {
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.metric {
+  padding: 13px 15px;
+}
+.metric-top {
+  font-size: 11px;
+}
+.metric-icon {
+  font-size: 15px;
+  padding: 5px 7px;
+}
+.metric-value {
+  font-size: 23px;
+  margin: 9px 0 7px;
+}
+.metric-note {
+  font-size: 10px;
+}
+.dashboard-layout {
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) 275px;
+}
+.dashboard-layout > section .products {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.rail {
+  gap: 13px;
+}
+.rail .panel {
+  padding: 15px;
+}
+.quick-grid {
+  margin-top: 12px;
+  gap: 8px;
+}
+.quick-grid button {
+  min-height: 66px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 10px;
+  padding: 11px;
+}
+.quick-grid .ui-icon {
+  color: var(--accent);
+  width: 21px;
+  height: 21px;
+}
+.feed-row {
+  padding: 10px 0;
+}
+.feed-row p {
+  margin: 3px 0;
+}
+.dashboard-backup {
+  display: none;
+}
+.panel {
+  padding: 16px;
+}
+.summary-row {
+  margin: 15px 0;
+  font-size: 12px;
+}
+.summary-row.total {
+  padding-top: 15px;
+  font-size: 18px;
+}
+.order-notice {
+  padding: 10px 13px;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+.order-notice small {
+  font-size: 10px;
+}
+/* DOCK MÓVIL. Tres destinos principales siempre visibles, con nombre y posición activa. */
+body.customer-view .mobile-dock {
+  display: none;
+}
+.mobile-dock button {
+  flex: 1;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+  padding: 7px 12px;
+}
+.mobile-dock button .ui-icon {
+  width: 21px;
+  height: 21px;
+}
+.mobile-dock button.active {
+  background: var(--accent-dark);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: none;
+}
+#modal .shopping-help {
+  margin: 0;
+  padding: 0;
+}
+#modal .shopping-help > h2 {
+  font-size: 20px;
+}
+#modal .shopping-steps {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+#modal .shopping-steps article {
+  padding: 13px;
+}
+#modal .shopping-steps h3 {
+  margin: 6px 0;
+}
+/* Los dispositivos sin mouse conservan visible el botón sobre la fotografía. */
+@media (hover: none), (pointer: coarse) {
+  .photo-detail {
+    opacity: 1 !important;
+  }
+}
+/* TABLET. Tres prendas por página y acceso directo a las acciones del panel. */
+@media (max-width: 1100px) {
+  .catalog-products,
+  .customer-view .catalog-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-layout > section {
+    display: none;
+  }
+  .rail {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-copy {
+    padding: 20px;
+  }
+  .hero-copy h1 {
+    font-size: 32px;
+  }
+  .hero-photos {
+    min-height: 220px;
+  }
+  .category-strip {
+    gap: 12px;
+  }
+  .category-strip > span {
+    display: none;
+  }
+}
+/* MÓVIL Y TABLET PEQUEÑA. El encabezado y la navegación inferior evitan volver al principio. */
+@media (max-width: 900px) {
+  header,
+  .customer-view header {
+    top: 0;
+    height: 60px;
+    padding: 0 15px;
+  }
+  #sidebar,
+  .customer-view #sidebar {
+    top: 60px;
+    max-height: calc(100dvh - 60px);
+    overflow-y: auto;
+  }
+  .customer-view #sidebar {
+    height: auto;
+  }
+  .customer-view #sidebar nav {
+    gap: 9px;
+  }
+  .customer-view main {
+    padding: 17px 18px 82px;
+  }
+  body.customer-view .mobile-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px calc(6px + env(safe-area-inset-bottom));
+    background: var(--sidebar);
+    border-top: 1px solid var(--line);
+  }
+  .customer-view .mobile-dock .active {
+    display: flex;
+  }
+  .hero-copy h1 {
+    font-size: 30px;
+  }
+  .hero-copy p {
+    font-size: 11px;
+  }
+  .customer-view .product .photo {
+    height: 150px;
+  }
+  .section-heading > button {
+    white-space: nowrap;
+  }
+}
+/* CELULAR. Dos prendas por página y una portada breve sin textos repetidos. */
+@media (max-width: 650px) {
+  main {
+    padding: 16px 14px 12px;
+  }
+  .customer-view main {
+    padding: 14px 14px 79px;
+  }
+  .page-heading {
+    margin-bottom: 15px;
+    gap: 10px;
+  }
+  .page-heading h1 {
+    font-size: 23px;
+  }
+  .page-heading p {
+    font-size: 11px;
+    max-width: 100%;
+  }
+  .page-heading .primary {
+    font-size: 10px;
+    padding: 9px;
+    max-width: 135px;
+  }
+  .mode-switch button {
+    padding: 7px 9px;
+  }
+  .mode-switch {
+    gap: 1px;
+  }
+  .header-right {
+    gap: 9px;
+  }
+  .fashion-hero {
+    grid-template-columns: 1.5fr 1fr;
+    min-height: 175px;
+    border-radius: 13px;
+    margin-bottom: 12px;
+  }
+  .hero-copy {
+    padding: 19px 14px;
+  }
+  .hero-copy h1 {
+    font-size: 28px;
+    letter-spacing: -1px;
+    margin: 9px 0 14px;
+  }
+  .hero-copy p,
+  .hero-buttons > span {
+    display: none;
+  }
+  .collection-pill {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .hero-buttons .primary {
+    padding: 10px 12px;
+    font-size: 10px;
+    gap: 3px;
+  }
+  .hero-photos {
+    min-height: 175px;
+  }
+  .hero-photo-main {
+    height: 100%;
+    width: 100%;
+    border-radius: 30px 0 0 0;
+  }
+  .hero-photo-small {
+    display: none;
+  }
+  .shopping-help-button {
+    top: 8px;
+    right: 8px;
+    padding: 5px;
+    font-size: 0;
+    gap: 0;
+    border-radius: 50%;
+    min-width: 30px;
+    min-height: 30px;
+  }
+  .shopping-help-button .ui-icon {
+    width: 17px;
+    height: 17px;
+  }
+  .category-strip {
+    padding-bottom: 12px;
+  }
+  .category-strip > div {
+    gap: 6px;
+  }
+  .category-strip button {
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+  .category-strip button:nth-child(n + 4) {
+    display: none;
+  }
+  .home-featured .section-heading h2 {
+    font-size: 17px;
+  }
+  .home-featured .product:nth-child(n + 3) {
+    display: none;
+  }
+  .home-featured .section-heading > button {
+    max-width: 90px;
+    font-size: 9px;
+    white-space: normal;
+    line-height: 1.4;
+    padding: 7px;
+  }
+  .catalog-products,
+  .customer-view .catalog-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .photo,
+  .customer-view .product .photo {
+    height: 145px;
+  }
+  .product-info,
+  .customer-view .product-info {
+    padding: 10px;
+  }
+  .product h3,
+  .customer-view .product h3 {
+    font-size: 11px;
+    margin: 5px 0 7px;
+  }
+  .product-category {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+  .stock {
+    font-size: 9px;
+  }
+  .product-actions {
+    margin-top: 7px;
+    padding-top: 6px;
+    min-height: 14px;
+  }
+  .photo-detail {
+    opacity: 1;
+    padding: 8px 12px;
+    font-size: 10px;
+    bottom: 10px;
+  }
+  .photo-detail .ui-icon {
+    width: 15px;
+    height: 15px;
+  }
+  .tag {
+    font-size: 7px;
+    padding: 4px 5px;
+    top: 8px;
+    left: 8px;
+  }
+  .toolbar {
+    gap: 7px;
+  }
+  #catalog-filters > input {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  #catalog-filters > select {
+    flex: 1 1 calc(50% - 7px);
+    max-width: none;
+    width: calc(50% - 7px);
+  }
+  #catalog-filters > button {
+    flex: 1;
+  }
+  #catalog-filters input,
+  #catalog-filters select {
+    min-height: 39px;
+  }
+  #extra-filters > input,
+  #extra-filters > select {
+    flex: 1 1 calc(50% - 7px);
+    min-width: 0;
+    width: calc(50% - 7px);
+  }
+  .compact-pagination {
+    margin-top: 12px;
+    padding-top: 10px;
+    align-items: center;
+  }
+  .compact-pagination > span {
+    font-size: 10px;
+    max-width: 135px;
+    line-height: 1.6;
+  }
+  .compact-pagination button {
+    padding: 7px 9px;
+    min-width: 38px;
+    min-height: 40px;
+  }
+  .compact-pagination button span {
+    display: none;
+  }
+  .section-switch {
+    width: 100%;
+    gap: 4px;
+    justify-content: space-between;
+  }
+  .section-switch button {
+    font-size: 11px;
+    padding: 9px 10px;
+    flex: 1;
+    gap: 6px;
+  }
+  .section-switch .ui-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .rail {
+    grid-template-columns: 1fr;
+  }
+  .metrics {
+    gap: 9px;
+    margin-bottom: 14px;
+  }
+  .metric {
+    padding: 11px;
+  }
+  .metric-value {
+    font-size: 21px;
+    margin: 7px 0;
+  }
+  .metric-icon {
+    font-size: 13px;
+    padding: 4px 6px;
+  }
+  .metric-top {
+    font-size: 10px;
+  }
+  .metric-note {
+    font-size: 9px;
+  }
+  .quick-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .quick-grid button {
+    font-size: 9px;
+    padding: 8px;
+    min-height: 74px;
+    line-height: 1.5;
+  }
+  .rail .panel {
+    padding: 13px;
+  }
+  .feed-row {
+    padding: 8px 0;
+  }
+  .rail h2 {
+    font-size: 13px;
+  }
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+  #report-content[data-section='ventas'] > .panel {
+    display: block;
+  }
+  .report-actions button {
+    flex: 1 1 calc(50% - 8px);
+    font-size: 10px;
+    padding: 9px;
+  }
+  .report-actions .primary {
+    padding: 10px;
+  }
+  .toolbar .field {
+    flex: 1 1 calc(50% - 7px);
+  }
+  .data-table td {
+    padding: 10px;
+    font-size: 11px;
+  }
+  .cart-layout {
+    gap: 13px;
+  }
+  footer {
+    margin-top: 14px;
+    font-size: 8px;
+  }
+  .summary-row {
+    margin: 13px 0;
+  }
+  .order-notice {
+    font-size: 10px;
+  }
+  .order-notice small {
+    font-size: 9px;
+  }
+}
+/* Muy poco alto o zoom: el contenido sigue accesible con desplazamiento natural. */
+@media (max-height: 650px) and (min-width: 901px) {
+  .fashion-hero {
+    min-height: 180px;
+  }
+  .hero-copy {
+    padding: 15px 22px;
+  }
+  .hero-photos {
+    min-height: 180px;
+  }
+  .hero-copy h1 {
+    font-size: 29px;
+  }
+  .hero-copy p {
+    display: none;
+  }
+  .photo,
+  .customer-view .product .photo {
+    height: 125px;
+  }
+}
+/* Los controles interactivos y la navegación se omiten en impresión manual. */
+@media print {
+  .mobile-dock,
+  .section-switch,
+  .compact-pagination,
+  .report-explain {
+    display: none !important;
+  }
+  [data-report-panel][hidden] {
+    display: block !important;
+  }
+}
+.customer-view main {
+  padding-bottom: 8px;
+}
+.customer-view footer {
+  margin-top: 12px;
+}
+.mobile-dock button {
+  position: relative;
+}
+.dock-count {
+  position: absolute;
+  top: 3px;
+  right: 26%;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 1px 4px;
+  border-radius: 8px;
+  font-size: 9px;
+  min-width: 14px;
+}
+@media (max-width: 900px) {
+  .customer-view main {
+    padding-bottom: 79px;
+  }
+}
+@media (max-width: 650px) {
+  #inventory-table th:nth-child(2),
+  #inventory-table td:nth-child(2),
+  #inventory-table th:nth-child(5),
+  #inventory-table td:nth-child(5),
+  #sales-table th:nth-child(2),
+  #sales-table td:nth-child(2),
+  #sales-table th:nth-child(3),
+  #sales-table td:nth-child(3) {
+    display: none;
+  }
+  #inventory-table td,
+  #inventory-table th,
+  #sales-table td,
+  #sales-table th {
+    padding: 8px 6px;
+  }
+  #inventory-table td:first-child,
+  #sales-table td:first-child {
+    white-space: normal;
+    max-width: 95px;
+  }
+  #inventory-table button,
+  #sales-table button {
+    padding: 6px;
+    font-size: 9px;
+  }
+  #events-table,
+  #events-table tbody {
+    display: block;
+    width: 100%;
+  }
+  #events-table thead {
+    display: none;
+  }
+  #events-table tr {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    padding: 9px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  #events-table td {
+    display: block;
+    padding: 3px;
+    border: 0;
+    white-space: normal;
+  }
+  #events-table td:nth-child(3) {
+    grid-column: 1/-1;
+    min-width: 0 !important;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  #events-table td:nth-child(4) {
+    display: none;
+  }
+  #events-table td:nth-child(5) {
+    grid-column: 1/-1;
+    color: var(--muted);
+    font-size: 10px;
+  }
+}
+/* En el reporte móvil se priorizan los dos indicadores de ventas; stock y eventos siguen en sus secciones. */
+@media (max-width: 650px) {
+  body[data-page='reportes'] .metric:nth-child(n + 3) {
+    display: none;
+  }
+}
+/* Ajustes para mantener los resúmenes móviles dentro de una pantalla habitual. */
+.feed-more {
+  font-size: 10px;
+  padding: 5px 8px;
+  background: transparent;
+}
+@media (max-width: 650px) {
+  body[data-page='inicio'] #page-description,
+  body[data-page='eventos'] #page-description {
+    display: none;
+  }
+  body[data-page='inicio'] .feed-row:nth-child(n + 3) {
+    display: none;
+  }
+  body[data-page='reportes'] #content > .toolbar:first-child {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 68px;
+    align-items: end;
+  }
+  body[data-page='reportes'] .toolbar .field {
+    width: auto;
+    min-width: 0;
+  }
+  body[data-page='reportes'] .toolbar .field input {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 5px;
+    font-size: 11px;
+  }
+  body[data-page='reportes'] #clear-report-period {
+    font-size: 9px;
+    padding: 8px 4px;
+    min-height: 37px;
+    white-space: normal;
+  }
+  #report-content[data-section='ventas'] > .panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0 14px;
+  }
+  #report-content .bar-row label {
+    font-size: 10px;
+    gap: 5px;
+  }
+  #report-content .bar-row label span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  #report-content .bar-row label strong {
+    white-space: nowrap;
+  }
+  #event-source,
+  #event-from,
+  #event-to {
+    min-width: 0 !important;
+    width: 100%;
+    flex: 1 1 100px;
+  }
+  #event-extra-filters {
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  body[data-page='eventos'] #content > .toolbar:first-of-type > select {
+    width: auto;
+    max-width: 140px;
+  }
+  #event-more-filters,
+  button[data-events-csv] {
+    font-size: 10px;
+    padding: 9px 10px;
+  }
+}
+
+/* BOTONES MÁS LEGIBLES. El texto e icono conservan contraste en ambos temas. */
+button {
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border-color 0.18s,
+    box-shadow 0.18s,
+    transform 0.18s;
+}
+button:hover:not(:disabled),
+button:focus-visible,
+.button-highlight:not(:disabled) {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 2px #a5f0cf25,
+    0 5px 12px #0002;
+}
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+button:disabled {
+  box-shadow: none;
+}
+nav button span,
+.customer-view #sidebar nav button span {
+  font-size: 13px;
+  font-weight: 700;
+}
+nav button.active {
+  font-weight: 800;
+}
+.primary,
+.hero-buttons .primary {
+  font-size: 12px;
+  font-weight: 800;
+}
+.section-heading > button,
+.toolbar > button,
+.report-actions button,
+.section-switch button,
+.feed-more {
+  font-size: 12px;
+  font-weight: 700;
+}
+.quick-grid button {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.mode-switch button {
+  font-size: 11px;
+  font-weight: 700;
+}
+.mode-switch button[aria-pressed='true'] {
+  font-weight: 800;
+}
+/* ACCIONES DE LA TARJETA. Ambas opciones se ven siempre, sin depender de adivinar un gesto. */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+.product-actions .dots {
+  min-height: 9px;
+}
+.card-buttons {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: 7px;
+}
+.card-buttons button {
+  width: 100%;
+  min-height: 35px;
+  padding: 7px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.card-detail-button {
+  background: var(--panel2);
+  color: var(--text);
+}
+.card-detail-button:hover,
+.card-detail-button:focus-visible {
+  background: var(--accent-dark);
+  color: var(--accent);
+}
+.card-buy-button {
+  background: var(--accent);
+  color: #112c23;
+}
+body.light .card-buy-button {
+  color: #fff;
+}
+.card-buy-button:hover {
+  filter: brightness(1.08);
+}
+.card-buy-button .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+.photo-detail:hover {
+  transform: translateX(-50%);
+}
+.photo-detail {
+  font-size: 12px;
+  font-weight: 800;
+}
+.product h3,
+.customer-view .product h3 {
+  font-size: 13px;
+  font-weight: 700;
+}
+.price,
+.product .price {
+  font-size: 16px;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--text);
+}
+.stock {
+  font-size: 10px;
+}
+.category-strip button {
+  font-size: 11px;
+  font-weight: 700;
+}
+.data-table button {
+  font-weight: 700;
+}
+/* Se compensa el espacio de las dos acciones con una portada breve en escritorio. */
+@media (min-width: 901px) {
+  .fashion-hero {
+    min-height: 190px;
+  }
+  .hero-copy {
+    padding: 15px 25px;
+  }
+  .hero-copy h1 {
+    font-size: 32px;
+    margin: 9px 0;
+  }
+  .hero-copy p {
+    margin-bottom: 9px;
+  }
+  .hero-photos {
+    min-height: 190px;
+  }
+  .category-strip {
+    padding-bottom: 12px;
+  }
+}
+/* GUÍA DEL DUEÑO. Se lee dentro del diálogo y no alarga el tablero. */
+.admin-guide-intro {
+  color: var(--text);
+  font-size: 14px;
+}
+.admin-guide-steps {
+  padding-left: 22px;
+  margin: 18px 0;
+}
+.admin-guide-steps li {
+  padding-left: 5px;
+  margin-bottom: 17px;
+}
+.admin-guide-steps li::marker {
+  color: var(--accent);
+  font-weight: 800;
+}
+.admin-guide-steps strong {
+  font-size: 13px;
+}
+.admin-guide-steps p {
+  font-size: 12px;
+  margin: 6px 0 0;
+  line-height: 1.65;
+}
+.admin-guide-note {
+  font-size: 11px;
+}
+/* CELULAR: textos destacados sin sacrificar el área de toque ni provocar desbordamiento. */
+@media (max-width: 650px) {
+  .card-buttons {
+    grid-template-columns: 1.12fr 1fr;
+    gap: 5px;
+  }
+  .card-buttons button {
+    font-size: 11px;
+    padding: 8px 5px;
+    min-height: 36px;
+    gap: 4px;
+  }
+  .card-buy-button .ui-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .product h3,
+  .customer-view .product h3 {
+    font-size: 12px;
+  }
+  .price,
+  .product .price {
+    font-size: 15px;
+  }
+  .photo-detail {
+    font-size: 11px;
+  }
+  .toolbar > button,
+  .section-switch button,
+  .report-actions button {
+    font-size: 12px;
+  }
+  .mode-switch button {
+    font-size: 11px;
+  }
+  .mobile-dock button span {
+    font-size: 11px;
+  }
+  .quick-grid button {
+    font-size: 11px;
+  }
+  .category-strip button {
+    font-size: 11px;
+  }
+  .data-table button {
+    font-size: 11px;
+  }
+  .hero-buttons .primary {
+    font-size: 11px;
+  }
+  .page-heading .primary {
+    font-size: 11px;
+  }
+  .category-strip > div {
+    gap: 5px;
+  }
+  .category-strip button {
+    padding: 7px 9px;
+  }
+}
+/* ACCESIBILIDAD: la preferencia de movimiento reducido elimina los desplazamientos de botones. */
+@media (prefers-reduced-motion: reduce) {
+  button:hover:not(:disabled),
+  button:active:not(:disabled) {
+    transform: none;
+  }
+  .photo-detail:hover {
+    transform: translateX(-50%);
+  }
+}
+/* En celular no se duplica el detalle sobre la foto: las dos acciones ya están visibles debajo. */
+@media (max-width: 650px), (hover: none), (pointer: coarse) {
+  .photo-detail {
+    display: none !important;
+  }
+}
+/* Compensa el espacio de los botones más grandes sin alargar la portada en escritorio. */
+@media (min-width: 901px) {
+  .customer-view main {
+    padding-top: 9px;
+  }
+  .customer-view footer {
+    margin-top: 10px;
+  }
+}
+
+/* ICONOS COMO IMÁGENES. Los dibujos se guardan en img/iconos/, fuera del HTML principal. */
+.ui-icon {
+  object-fit: contain;
+}
+body.light img.ui-icon {
+  filter: brightness(0.42);
+}
+.primary img.ui-icon,
+.card-buy-button img.ui-icon {
+  filter: brightness(0.2);
+}
+body.light .primary img.ui-icon,
+body.light .card-buy-button img.ui-icon {
+  filter: brightness(0) invert(1);
+}
+.photo-detail img.ui-icon {
+  filter: brightness(0.35);
+}
+/* FORMULARIO GUIADO. Un campo activo por paso, ayuda accesible y navegación explícita. */
+.guide-header {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.guide-count {
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+  font-weight: 800;
+}
+.guide-title {
+  font-size: 14px;
+  text-align: right;
+}
+.guide-alert {
+  background: var(--panel2);
+  border-left: 3px solid #e0b96d;
+  border-radius: 7px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.guide-alert.guide-ok {
+  border-left-color: var(--accent);
+}
+.guided-form .form-grid {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.guided-form .field {
+  grid-column: 1/-1;
+}
+.guided-form .field label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
+.guided-form .field input,
+.guided-form .field select,
+.guided-form .field textarea {
+  min-height: 44px;
+  font-size: 14px;
+}
+.guided-form .field textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+.field-feedback {
+  color: #e8bf80;
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 3px 0 0;
+}
+body.light .field-feedback {
+  color: #7c4b10;
+}
+.field-feedback.feedback-ok {
+  color: var(--accent);
+}
+.guided-form .form-actions {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.guided-form .form-actions button {
+  min-height: 40px;
+  font-size: 12px;
+  padding: 10px 13px;
+}
+.guided-form [aria-invalid='true'] {
+  border-color: #e3b76a;
+}
+.guided-form .form-actions [data-close] {
+  margin-right: auto;
+}
+/* FECHAS ESTABLES. Escribir no reconstruye el campo; la consulta cambia al pulsar Aplicar. */
+.calendar-note {
+  flex-basis: 100%;
+  grid-column: 1/-1;
+  color: var(--muted);
+  font-size: 10px;
+  margin: 0;
+  line-height: 1.6;
+}
+.calendar-note.date-error {
+  color: var(--red);
+  font-weight: 700;
+}
+input[type='date'] {
+  min-height: 40px;
+  font-variant-numeric: tabular-nums;
+}
+#clear-report-period {
+  min-width: 32px;
+  font-size: 20px;
+  padding: 5px;
+}
+/* EMPRESA FICTICIA. Los datos y redes se muestran claramente como demostración. */
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 17px;
+}
+.company-header h3 {
+  font-size: 23px;
+  letter-spacing: 2px;
+  margin: 0 0 4px;
+}
+.company-header p {
+  margin: 0;
+  font-size: 12px;
+}
+.company-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 20px;
+  margin: 20px 0;
+}
+.company-data dt {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.company-data dd {
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.social-links {
+  margin-top: 14px;
+}
+.social-links a {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px;
+  margin: 8px 0;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.social-links a strong {
+  color: var(--text);
+  font-size: 13px;
+}
+.social-links a span,
+.social-links p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.social-links a:hover,
+.social-links a:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px #a5f0cf20;
+}
+.contact-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--accent);
+}
+@media (max-width: 650px) {
+  .guide-header {
+    gap: 8px;
+  }
+  .guide-title {
+    font-size: 13px;
+  }
+  .guide-alert {
+    font-size: 12px;
+    padding: 11px;
+  }
+  .guided-form .form-actions button {
+    font-size: 11px;
+    padding: 9px 10px;
+  }
+  .company-data {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+  body[data-page='reportes'] #content > .toolbar:first-child {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  body[data-page='reportes'] #page-description {
+    display: none;
+  }
+  #apply-report-period {
+    font-size: 12px;
+    min-height: 38px;
+  }
+  #clear-report-period {
+    font-size: 22px;
+    min-height: 38px;
+  }
+  body[data-page='reportes'] .toolbar .field input {
+    font-size: 13px;
+    padding: 9px 7px;
+  }
+  footer {
+    gap: 8px;
+  }
+  .contact-link {
+    font-size: 9px;
+  }
+}
